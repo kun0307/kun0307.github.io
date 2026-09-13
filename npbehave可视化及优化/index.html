@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+<!-- 
+Theme by Mashiro
+                      /^--^\     /^--^\     /^--^\
+                      \____/     \____/     \____/
+                     /      \   /      \   /      \
+                    |        | |        | |        |
+                     \__  __/   \__  __/   \__  __/
+|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
+| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
+########################/ /######\ \###########/ /#######################
+| | | | | | | | | | | | /| | | | /| | | | | |/ | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<title itemprop="name">NPBehave可视化及优化 – 心界</title>
+<link href="/wordpress/wp-content/themes/Sakura-master/images/favicon.ico" rel="shortcut icon"/>
+<meta content="#31363b" name="theme-color"/>
+<meta content="on" http-equiv="x-dns-prefetch-control"/>
+<meta content="max-image-preview:large" name="robots"/>
+<link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link href="/wordpress/wp-includes/css/dist/block-library/style.min.css?ver=6.5.5" id="wp-block-library-css" media="all" rel="stylesheet" type="text/css"/>
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link href="/wordpress/wp-content/themes/Sakura-master/style.css?ver=3.3.9" id="saukra_css-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/npbehave%e5%8f%af%e8%a7%86%e5%8c%96%e5%8f%8a%e4%bc%98%e5%8c%96/" rel="canonical"/>
+<link href="/?p=453" rel="shortlink"/>
+<style type="text/css">
+.site-top .lower nav {display: block !important;}
+.author-profile i , .post-like a , .post-share .show-share , .sub-text , .we-info a , span.sitename , .post-more i:hover , #pagination a:hover , .post-content a:hover , .float-content i:hover{ color: #FE9600 }
+.feature i , /*.feature-title span ,*/ .download , .navigator i:hover , .links ul li:before , .ar-time i , span.ar-circle , .object , .comment .comment-reply-link , .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #FE9600 }
+::-webkit-scrollbar-thumb { background: #FE9600 }
+.download , .navigator i:hover , .link-title , .links ul li:hover , #pagination a:hover , .comment-respond input[type='submit']:hover { border-color: #FE9600 }
+.entry-content a:hover , .site-info a:hover , .comment h4 a , #comments-navi a.prev , #comments-navi a.next , .comment h4 a:hover , .site-top ul li a:hover , .entry-title a:hover , #archives-temp h3 , span.page-numbers.current , .sorry li a:hover , .site-title a:hover , i.iconfont.js-toggle-search.iconsearch:hover , .comment-respond input[type='submit']:hover, blockquote:before, blockquote:after { color: #FE9600 }
+
+#aplayer-float .aplayer-lrc-current { color: #FE9600 !important}
+
+.is-active-link::before, .commentbody:not(:placeholder-shown)~.input-label, .commentbody:focus~.input-label {
+    background-color: #FE9600 !important
+}
+
+.commentbody:focus {
+    border-color: #FE9600 !important
+}
+
+.insert-image-tips:hover, .insert-image-tips-hover{ 
+    color: #FE9600;
+    border: 1px solid #FE9600}
+
+.site-top ul li a:after {
+    background-color: #FE9600}
+
+.scrollbar,.butterBar-message {
+    background: #FE9600 !important
+}
+
+#nprogress .spinner-icon{ 
+    border-top-color: #FE9600; 
+    border-left-color: #FE9600}
+
+#nprogress .bar {
+    background: #FE9600}
+
+.changeSkin-gear,.toc{
+    background:rgba(255,255,255,0.3);
+}
+
+.entry-content th {
+    background-color: #FE9600}
+
+.post-list-thumb:nth-child(2n) .post-content-wrap {
+    float: left;
+    padding-left: 30px;
+    padding-right: 0;
+    text-align: right;
+    margin: 20px 10px 10px 0
+}
+.post-list-thumb:nth-child(2n) .post-thumb {
+    float: left
+}
+
+.post-list-thumb:nth-child(2n) .post-thumb a {
+    border-radius: 10px 0 0 10px
+}
+
+
+.post-list-thumb{opacity: 0}
+.post-list-show {opacity: 1}
+
+.centerbg{background-image: url("/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg");background-position: center center;background-attachment: inherit;}
+.rotating {
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
+}
+body.dark #main-container,body.dark .pattern-center:after,body.dark #mo-nav,body.dark .headertop-bar::after,body.dark .site-content,body.dark .comments,body.dark .site-footer{background:#31363b !important;}body.dark .pattern-center-blank,body.dark .yya,body.dark .blank,body.dark .changeSkin-gear,body.dark .toc,body.dark .search-form input{background:rgba(49,54,59,0.85);}body.dark .single-reward .reward-row{background:#bebebe;}body.dark .font-family-controls button{background-color:#828080;}body.dark .single-reward .reward-row:before{border-bottom:13px solid #bebebe;}body.dark .search-form--modal,body.dark .ins-section .ins-section-header{border-bottom:none;background:rgba(49,54,59,0.95);}body.dark .ins-section .ins-search-item:hover,body.dark .ins-section .ins-search-item.active,body.dark .ins-section .ins-search-item:hover .ins-slug,body.dark .ins-section .ins-search-item.active .ins-slug,body.dark .ins-section .ins-search-item:hover .ins-search-preview,body.dark .ins-section .ins-search-item.active .ins-search-preview,body.dark .ins-section .ins-search-item:hover header,body.dark .ins-section .ins-search-item:hover .iconfont{color:#fff;background:#31363b;}body.dark .search_close:after,body.dark .search_close:before{background-color:#eee;}body.dark .search_close:hover:after,body.dark .search_close:hover:before{background-color:#3daee9;}body.dark input.m-search-input{background:#bebebe;}body.dark .openNav .icon,body.dark .openNav .icon:after,body.dark .openNav .icon:before{background-color:#eee;}body.dark .site-header:hover{background:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .menhera-container .emoji-item:hover{color:#424952;}body.dark .entry-content p,body.dark .entry-content ul,body.dark .entry-content ol,body.dark .comments .body p,body.dark .float-content,body.dark .post-list p,body.dark .link-title{color:#bebebe !important;}body.dark .entry-title a,body.dark .post-list-thumb .post-title,body.dark .post-list-thumb,body.dark .art-content #archives .al_mon_list .al_mon,body.dark .art-content #archives .al_mon_list span,body.dark .art .art-content #archives a,body.dark .menhera-container .emoji-item{color:#bebebe;}body.dark .logolink a,body.dark .post-content a:hover,body.dark .comment .body p a{color:rgba(61,174,233,0.8) !important;}body.dark .lower li ul,body.dark .header-user-avatar:hover .header-user-menu{background:#31363b;}body.dark .header-user-menu::before,body.dark .lower li ul::before{border-color:transparent transparent #31363b transparent;}body.dark .site-top ul li a,body.dark .header-user-menu a,body.dark #mo-nav ul li a,body.dark .site-title a,body.dark header.page-header,body.dark h1.cat-title{color:#eee;}body.dark .art .art-content #archives .al_year,body.dark .comment-respond input,body.dark .comment-respond textarea,body.dark .siren-checkbox-label{color:#eee;}body.dark input[type=color]:focus,body.dark input[type=date]:focus,body.dark input[type=datetime-local]:focus,body.dark input[type=datetime]:focus,body.dark input[type=email]:focus,body.dark input[type=month]:focus,body.dark input[type=number]:focus,body.dark input[type=password]:focus,body.dark input[type=range]:focus,body.dark input[type=search]:focus,body.dark input[type=tel]:focus,body.dark input[type=text]:focus,body.dark input[type=time]:focus,body.dark input[type=url]:focus,body.dark input[type=week]:focus,body.dark textarea:focus,body.dark #mo-nav .m-search form{color:#eee;background-color:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .post-meta{color:#888;}body.dark img,body.dark .cd-top,body.dark .highlight-wrap,body.dark iframe,body.dark .entry-content .aplayer{filter:brightness(0.8);}body.dark .post-list-thumb{box-shadow:0 1px 35px -8px rgba(0,0,0,0.8);}body.dark .centerbg{background-blend-mode:hard-light;background-color:#31363b;}body.dark .notice{color:#EFF0F1;background:#232629;border:none;}body.dark h1.fes-title,body.dark h1.main-title{border-bottom:1px dashed #ababab;}body.dark .scrollbar,body.dark .butterBar p.butterBar-message{background:#3daee9 !important;}body.dark .entry-content p code{color:#eee !important;background:rgba(61,174,233,0.5) !important;}body.dark .notification,body.dark #moblieGoTop,body.dark #moblieDarkLight{color:#eee;background-color:#232629;}body.dark #moblieGoTop:hover,body.dark #moblieDarkLight:hover{background-color:#232629;opacity:.8;}body.dark .widget-area{background-color:rgba(35,38,41,0.8);}body.dark .skin-menu,body.dark .menu-list li,body.dark .widget-area .heading,body.dark .widget-area .show-hide svg,body.dark #aplayer-float,body.dark .aplayer.aplayer-fixed .aplayer-body,body.dark .aplayer .aplayer-miniswitcher,body.dark .aplayer .aplayer-pic{color:#eee;background-color:#232629 !important;}body.dark .skin-menu::after{border-color:#232629 transparent transparent transparent;}body.dark .aplayer .aplayer-list ol li .aplayer-list-author{color:#eee;}body.dark #aplayer-float .aplayer-lrc-current{color:transparent !important;}body.dark .aplayer.aplayer-fixed .aplayer-lrc{text-shadow:-1px -1px 0 #989898;}body.dark .aplayer .aplayer-list ol li.aplayer-list-light{background:rgba(61,174,233,0.5) !important;}body.dark .aplayer .aplayer-list ol li:hover{background:rgba(61,174,233,0.8) !important;}body.dark .aplayer.aplayer-fixed .aplayer-list{border:none !important;}body.dark .aplayer.aplayer-fixed .aplayer-info,body.dark .aplayer .aplayer-list ol li{border-top:none !important;}body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path,body.dark .widget-area .show-hide svg path{fill:#fafafa;}body.dark,body.dark button,body.dark input,body.dark select,body.dark textarea{color:#eee;}body.dark button,body.dark input[type=button],body.dark input[type=reset],body.dark input[type=submit]{box-shadow:none;}body.dark .entry-content th{background-color:#3daee9;}body.dark .author-profile i,body.dark .post-like a,body.dark .post-share .show-share,body.dark .sub-text,body.dark .we-info a,body.dark span.sitename,body.dark .post-more i:hover,body.dark #pagination a:hover,body.dark .post-content a:hover,body.dark .float-content i:hover{color:#3daee9;}body.dark .feature i,body.dark .feature-title span,body.dark .download,body.dark .navigator i:hover,body.dark .links ul li:before,body.dark .ar-time i,body.dark span.ar-circle,body.dark .object,body.dark .comment .comment-reply-link,body.dark .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#3daee9;}body.dark .download,body.dark .navigator i:hover,body.dark .link-title,body.dark .links ul li:hover,body.dark #pagination a:hover,body.dark .comment-respond input[type='submit']:hover{border-color:#3daee9;}body.dark .site-info a:hover,body.dark .comment h4 a,body.dark #comments-navi a.prev,body.dark #comments-navi a.next,body.dark .comment h4 a:hover,body.dark .site-top ul li a:hover,body.dark .entry-title a:hover,body.dark #archives-temp h3,body.dark span.page-numbers.current,body.dark .sorry li a:hover,body.dark .site-title a:hover,body.dark .js-toggle-search.iconsearch:hover,body.dark .comment-respond input[type='submit']:hover,body.dark blockquote:before,body.dark blockquote:after,body.dark .entry-content a{color:#3daee9 !important;}body.dark .entry-content a:hover{color:#3daee9;text-decoration:underline !important;}body.dark .is-active-link::before,body.dark .commentbody:not(:placeholder-shown) ~ .input-label,body.dark .commentbody:focus ~ .input-label{background-color:#3daee9 !important;}body.dark .commentbody:focus{border-color:#3daee9 !important;}body.dark .insert-image-tips:hover,body.dark .insert-image-tips-hover{color:#3daee9;border:1px solid #3daee9;}body.dark .site-top ul li a:after,body.dark .menu-list li:hover,body.dark .font-family-controls button.selected{background-color:#3daee9 !important;}body.dark #nprogress .spinner-icon{border-top-color:#3daee9;border-left-color:#3daee9;}body.dark #nprogress .bar{background:#3daee9;}body.dark .comment .info,body.dark .comment-respond .logged-in-as,body.dark .notification,body.dark .comment-respond .logged-in-as a,body.dark .comment-respond .logged-in-as a:hover{color:#9499a8;}body.dark .sm{color:#377292 !important;}html,#main-container,.pattern-center:after,#mo-nav,.headertop-bar::after,.site-content,.comments,.site-footer,.pattern-center-blank,.yya,.blank,.changeSkin-gear,.toc,.search-form input{transition:background 1s;}.entry-content p,.entry-content ul,.entry-content ol,.comments .body p,.float-content,.post-list p,.link-title{transition:color 1s;}body.dark::-webkit-scrollbar-thumb,body.dark::selection{background:#377292;color:#ccc;}
+</style>
+<script>
+/*Initial Variables*/
+var mashiro_option = new Object();
+var mashiro_global = new Object();
+mashiro_option.NProgressON = false;
+mashiro_option.email_domain = "";
+mashiro_option.email_name = "";
+mashiro_option.cookie_version_control = "";
+mashiro_option.qzone_autocomplete = false;
+mashiro_option.site_name = "猫刀刀个人站";
+mashiro_option.author_name = "猫刀刀";
+mashiro_option.template_url = "/wordpress/wp-content/themes/Sakura-master";
+mashiro_option.site_url = "/wordpress";
+mashiro_option.qq_api_url = "/wp-json/sakura/v1/qqinfo/json"; 
+// mashiro_option.qq_avatar_api_url = "https://api.2heng.xin/qqinfo/";
+mashiro_option.live_search = false;
+
+mashiro_option.skin_bg0 = "none";
+mashiro_option.skin_bg1 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png";
+mashiro_option.skin_bg2 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/star02.png";
+mashiro_option.skin_bg4 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/kyotoanimation.png";
+mashiro_option.skin_bg5 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/dot_orange.gif";
+mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
+mashiro_option.skin_bg7 = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png";
+
+mashiro_option.darkmode = true;
+
+mashiro_option.land_at_home = false;
+
+mashiro_option.baguetteBoxON = false;
+
+mashiro_option.clipboardCopyright = true;
+
+mashiro_option.entry_content_theme_src = "/wordpress/wp-content/themes/Sakura-master/cdn/theme/sakura.css?3.3.9";
+mashiro_option.entry_content_theme = "sakura";
+
+mashiro_option.jsdelivr_css_src = "/wordpress/wp-content/themes/Sakura-master/cdn/css/lib.css";
+mashiro_option.float_player_on = false;
+mashiro_option.meting_api_url = "/wp-json/sakura/v1/meting/aplayer";
+
+mashiro_option.cover_api = "/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg";
+
+mashiro_option.windowheight = /Mobile|Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 'fixed' : 'auto';
+/*End of Initial Variables*/
+</script>
+<style id="custom-background-css" type="text/css">
+body.custom-background { background-image: url("/wordpress/wp-content/uploads/2021/06/bg1.jpg"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+</style>
+<script type="text/javascript">
+if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+  alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+}
+</script>
+<link href="/assets/static-restore.css" rel="stylesheet"/></head>
+<body class="post-template-default single single-post postid-453 single-format-standard custom-background chinese-font">
+<div class="scrollbar" id="bar"></div>
+<section id="main-container">
+<div class="site wrapper" id="page">
+<header class="site-header no-select" role="banner">
+<div class="site-top">
+<div class="site-branding">
+<span class="site-title">
+<span class="logolink serif">
+<a href="/">
+<span class="site-name">猫刀刀个人站</span>
+</a>
+</span>
+</span>
+<!-- logo end -->
+</div><!-- .site-branding -->
+
+<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+<div class="lower"> <nav><ul class="menu" id="menu-menu-1"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul></nav><!-- #site-navigation -->
+</div>
+</div>
+</header><!-- #masthead -->
+<div class="pattern-center-blank"></div>
+<div class="pattern-center single-center">
+<div class="pattern-attachment-img lazyload" data-src="/wordpress/wp-content/uploads/2021/10/wallhaven-72rxqo.jpg" style="background-image: url(/assets/vendor/8c901598231a1937f3.svg)"> </div>
+<header class="pattern-header single-header"><h1 class="entry-title">NPBehave可视化及优化</h1><p class="entry-census"><span><a href="/author/maodaodao/"><img src="/assets/avatar.svg"/></a></span><span><a href="/author/maodaodao/">maodaodao</a></span><span class="bull">·</span>2021-10-30<span class="bull">·</span>671 次阅读</p></header>
+</div>
+<div class="site-content" id="content">
+<div class="content-area" id="primary">
+<main class="site-main" id="main" role="main">
+<article class="post-453 post type-post status-publish format-standard has-post-thumbnail hentry category-23 category-12" id="post-453">
+<!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+<div class="entry-content">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><p>因为受到罡少的影响</p><cite>决定使用NPBehave来作为MDDSkillEngine中的技能逻辑组成部分</cite></blockquote>
+<p>因为NPBehave没有可视化界面，所以我们要制作一个。（基于罡少编程）</p>
+<p>本篇使用XNode + Odin的方案为NPBehave提供一个可视化编辑界面，<a href="https://www.lfzxb.top/nkgmoba-visualnodeeditor-skill/" rel="nofollow" target="_blank">借鉴了罡少的思路</a>。</p>
+<h2 class="wp-block-heading">需要解决的问题</h2>
+<p>其实可视化编辑是个老生常谈的问题</p>
+<p>我们无论如何都避不开在运行时申请行为树的runtime代码空间</p>
+<p>所以我们可以选择在运行时构建行为树</p>
+<p>那么我们的问题就来到了如何编辑构建行为树所需要的数据上</p>
+<p>在这之前</p>
+<p>我们梳理一下NPBehave的结构</p>
+<h2 class="wp-block-heading">NPBehave结构</h2>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-455" data-src="/wordpress/wp-content/uploads/2021/10/image-1024x545.png" decoding="async" fetchpriority="high" height="545" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2021/10/image-1024x545.png" srcset="/wordpress/wp-content/uploads/2021/10/image-1024x545.png 1024w, /wordpress/wp-content/uploads/2021/10/image-300x160.png 300w, /wordpress/wp-content/uploads/2021/10/image-768x408.png 768w, /wordpress/wp-content/uploads/2021/10/image.png 1256w" width="1024"/><figcaption>简单的行为树</figcaption></figure>
+<noscript><img alt="" class="wp-image-455" decoding="async" height="545" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2021/10/image-1024x545.png" srcset="/wordpress/wp-content/uploads/2021/10/image-1024x545.png 1024w, /wordpress/wp-content/uploads/2021/10/image-300x160.png 300w, /wordpress/wp-content/uploads/2021/10/image-768x408.png 768w, /wordpress/wp-content/uploads/2021/10/image.png 1256w" width="1024"/><figcaption>简单的行为树</figcaption></noscript>
+<p>可以看到，一颗行为树的结构其实就是一个多叉树</p>
+<p>NPBehave有三大基础节点</p>
+<h3 class="wp-block-heading">1.组合节点</h3>
+<p>常见的有</p>
+<p>Sequence--顺序执行节点</p>
+<p>Parallel--并行节点</p>
+<p>等</p>
+<p>组合节点的特征是有一个父亲和多个孩子</p>
+<h3 class="wp-block-heading">2.修饰节点</h3>
+<p>常见的有</p>
+<p>Codition</p>
+<p>BlackboardCondition</p>
+<p>Root</p>
+<p>CoolDown</p>
+<p>等</p>
+<p>修饰节点的特征是只有一个孩子，是孩子的前置节点，所以常作为是否执行孩子节点的判断节点使用</p>
+<h3 class="wp-block-heading">3.任务节点</h3>
+<p>常见的有</p>
+<p>Action</p>
+<p>Wait</p>
+<p>等</p>
+<p>任务节点一定是行为树的末端叶子节点，他是行为树经过诸多条件判断后最后的执行节点。</p>
+<h2 class="wp-block-heading">初始化顺序</h2>
+<p>对行为树结构有了一个基础理解以后</p>
+<p>我们发现，初始化行为树其实就是一个初始化多叉树的过程</p>
+<p>我这里的选择是在Editor阶段处理好数据排序</p>
+<p>在runtime阶段以一个固定的顺序读取初始化就好</p>
+<p>所以分为两个阶段</p>
+<h3 class="wp-block-heading">1.Editor排序关键步骤</h3>
+<h4 class="wp-block-heading">一，子节点顺序调整</h4>
+<p>我们在编辑行为树的过程中会频繁的拖动节点，频繁的创建和删除节点</p>
+<p>在这个过程中，我们要保证数据运行时的执行顺序是我们编辑时的视觉空间顺序</p>
+<p>所以我们要时常对每个节点的孩子进行排序</p>
+<pre class="wp-block-code"><code>/// <summary>
+        /// 给所有的孩子节点排序 通过坐标确定顺序
+        /// </summary>
+        private void SortAllChildrenNode()
+        {
+            if (graph == null)
+                return;
+
+            foreach (var node in graph.nodes)
+            {
+                foreach (var port in node.Outputs)
+                {
+                    port.Sort();
+                }
+            }
+        }
+
+
+        public void Sort()
+        {
+            connections.Sort((y, x) =&gt;
+            {
+                return x.node.position.y.CompareTo(y.node.position.y);
+            });
+        }</code></pre>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-457" data-src="/wordpress/wp-content/uploads/2021/10/image-1-1024x668.png" decoding="async" height="668" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2021/10/image-1-1024x668.png" srcset="/wordpress/wp-content/uploads/2021/10/image-1-1024x668.png 1024w, /wordpress/wp-content/uploads/2021/10/image-1-300x196.png 300w, /wordpress/wp-content/uploads/2021/10/image-1-768x501.png 768w, /wordpress/wp-content/uploads/2021/10/image-1.png 1105w" width="1024"/><figcaption>需要调整的子节点</figcaption></figure>
+<noscript><img alt="" class="wp-image-457" decoding="async" height="668" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2021/10/image-1-1024x668.png" srcset="/wordpress/wp-content/uploads/2021/10/image-1-1024x668.png 1024w, /wordpress/wp-content/uploads/2021/10/image-1-300x196.png 300w, /wordpress/wp-content/uploads/2021/10/image-1-768x501.png 768w, /wordpress/wp-content/uploads/2021/10/image-1.png 1105w" width="1024"/><figcaption>需要调整的子节点</figcaption></noscript>
+<h4 class="wp-block-heading">二，行为树按层次遍历顺序存储</h4>
+<p>选择层次遍历的理由是此遍历方法符合我们对行为树的直观思维</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-459" data-src="/wordpress/wp-content/uploads/2021/10/image-3.png" decoding="async" height="320" loading="lazy" sizes="(max-width: 425px) 100vw, 425px" src="/wordpress/wp-content/uploads/2021/10/image-3.png" srcset="/wordpress/wp-content/uploads/2021/10/image-3.png 425w, /wordpress/wp-content/uploads/2021/10/image-3-300x226.png 300w" width="425"/><figcaption>遍历结构</figcaption></figure>
+<noscript><img alt="" class="wp-image-459" decoding="async" height="320" loading="lazy" sizes="(max-width: 425px) 100vw, 425px" src="/wordpress/wp-content/uploads/2021/10/image-3.png" srcset="/wordpress/wp-content/uploads/2021/10/image-3.png 425w, /wordpress/wp-content/uploads/2021/10/image-3-300x226.png 300w" width="425"/><figcaption>遍历结构</figcaption></noscript>
+<p>比如这个结构，我们初始化时先实例化叶子节点，再实例化父节点，父节点就可以直接获取到孩子的实例</p>
+<p>最后统一设置父节点即可</p>
+<p>关键代码如下</p>
+<p> graph.nodes列表元素按照深度高的节点在前的顺序存储</p>
+<pre class="wp-block-code"><code> Queue<xnode.node> queue = new Queue<xnode.node>(100); //将队列初始化大小为100
+ Stack<xnode.node> stack = new Stack<xnode.node>(100);
+
+
+        /// <summary>
+        /// 行为树排序 并给ID自动赋值 层次遍历
+        /// </summary>
+        /// <param name="head"/>
+        private void SortTree(XNode.Node head)
+        {
+            if (head == null)
+            {
+                Debug.LogError("根节点为空");
+                return;
+            }   
+            
+            XNode.Node tMTreeNode;
+            
+            //将根节点入队列
+            queue.Enqueue(head);
+
+            //采用层次优先遍历方法，借助于队列
+            while (queue.Count != 0) //如果队列q不为空
+            {
+                tMTreeNode = queue.Dequeue(); //出队列
+
+                //孩子入队
+                foreach (var v in tMTreeNode.Outputs)
+                {
+                    foreach (var v1 in v.GetConnections())
+                    {
+                        queue.Enqueue(v1.node);
+                    }
+                }
+
+                stack.Push(tMTreeNode); //将p入栈
+            }
+
+            int i = 0;
+
+            while (stack.Count != 0) //不为空
+            {
+                i++;
+                tMTreeNode = stack.Pop(); //弹栈
+                NP_NodeBase node = tMTreeNode as NP_NodeBase;
+                node.Id = i;
+            }
+
+            graph.nodes.Sort((x,y)=&gt; 
+            {
+                NP_NodeBase nodex = x as NP_NodeBase;
+                NP_NodeBase nodey = y as NP_NodeBase;
+
+                return nodex.Id.CompareTo(nodey.Id);
+            });
+        }
+
+    }</xnode.node></xnode.node></xnode.node></xnode.node></code></pre>
+<p>总排序方法</p>
+<pre class="wp-block-code"><code>       /// <summary>
+        /// 行为树排序方法
+        /// </summary>
+        public void Sort()
+        {
+            if (graph == null)
+                return;
+
+            SortAllChildrenNode();
+            SortTree(graph.GetRootNode());
+        }</code></pre>
+<p>至此，我们获得了一个顺序调整好的节点列表。</p>
+<p>Runtime初始化时直接食用即可。</p>
+<h2 class="wp-block-heading">初始化方法及数据设计</h2>
+<h3 class="wp-block-heading">数据设计--基于XNode--基于Odin</h3>
+<h4 class="wp-block-heading">1.Editor数据基类</h4>
+<pre class="wp-block-code"><code>public abstract class NP_NodeBase : XNode.Node
+	{
+        [FoldoutGroup("节点Editor数据")]
+        [ReadOnly]
+        public int Id;
+       
+
+        [FoldoutGroup("节点Editor数据")]
+        [ReadOnly]
+        public NodeType nodeType;
+
+        [FoldoutGroup("节点Editor数据")]
+        public string des;
+
+
+    }</code></pre>
+<h4 class="wp-block-heading">2.三大节点Editor数据基类</h4>
+<pre class="wp-block-code"><code>    public abstract class NP_CompositeNodeBase : NP_NodeBase
+    {
+        protected override void Init()
+        {
+            nodeType = NodeType.Composite;
+        }
+
+        [Input(ShowBackingValue.Unconnected, ConnectionType.Override)]
+        public bool input;
+
+        [Output(ShowBackingValue.Never, ConnectionType.Multiple)]
+        public bool output;
+
+    }
+
+   public abstract class NP_DecoratorNodeBase : NP_NodeBase
+    {
+        protected override void Init()
+        {
+            nodeType = NodeType.Decorator;
+        }
+
+        [Input(ShowBackingValue.Unconnected, ConnectionType.Override)]
+        public bool input;
+
+        [Output(ShowBackingValue.Never, ConnectionType.Override)]
+        public bool output;
+    }
+
+   public abstract class NP_TaskNodeBase : NP_NodeBase
+    {
+        protected override void Init()
+        {
+            nodeType = NodeType.Task;
+        }
+
+        [Input(ShowBackingValue.Unconnected, ConnectionType.Override)]
+        public bool input;       
+    }</code></pre>
+<h4 class="wp-block-heading">3.Runtime数据基类</h4>
+<pre class="wp-block-code"><code> [FoldoutGroup("结点数据")]
+    public abstract class NP_NodeDataBase 
+    {
+
+        /// <summary>
+        /// 获取结点
+        /// </summary>
+        /// <returns></returns>
+        public virtual Node NP_GetNode()
+        {
+            return null;
+        }
+
+
+        /// <summary>
+        /// 创建组合结点
+        /// </summary>
+        /// <returns></returns>
+        public virtual Composite CreateComposite(Node[] nodes)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// 创建装饰结点
+        /// </summary>
+        /// <param name="unitId"/>行为树归属的Unit
+        /// <param name="runtimeTree"/>运行时归属的行为树
+        /// <param name="node"/>所装饰的结点
+        /// <returns></returns>
+        public virtual Decorator CreateDecoratorNode(object m_object, NP_Tree runtimeTree, Node node)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// 创建任务节点
+        /// </summary>
+        /// <param name="unitId"/>行为树归属的Unit
+        /// <param name="runtimeTree"/>运行时归属的行为树
+        /// <returns></returns>
+        public virtual Task CreateTask(object unit, NP_Tree runtimeTree)
+        {
+            return null;
+        }
+      
+    }
+
+    public enum NodeType
+    {
+        Composite,
+        Decorator,
+        Task,
+    }</code></pre>
+<h4 class="wp-block-heading">4.黑板值数据类</h4>
+<pre class="wp-block-code"><code>[BoxGroup("黑板数据配置")]
+    [HideLabel]
+    [ShowOdinSerializedPropertiesInInspector]
+    public class ClassForBlackboard
+    {
+        [LabelText("字典键")]
+        [ValueDropdown("GetBBKeys")]
+        [OnValueChanged("OnBBKeySelected")]
+        public string BBKey;
+
+        [LabelText("指定的值类型")]
+        [ReadOnly]
+        public string NP_BBValueType;
+
+        [LabelText("是否可以把值写入黑板，或者是否与黑板进行值对比")]
+        public bool WriteOrCompareToBB;
+
+        [ShowIf("WriteOrCompareToBB")]
+        public Variable NP_BBValue;
+
+
+#if UNITY_EDITOR
+        private IEnumerable<string> GetBBKeys()
+        {
+            if (NPBlackBoardEditorInstance.BBValues != null)
+            {
+                return NPBlackBoardEditorInstance.BBValues.Keys;
+            }
+
+            return null;
+        }
+
+        private void OnBBKeySelected()
+        {
+            if (NPBlackBoardEditorInstance.BBValues != null)
+            {
+                foreach (var bbValues in NPBlackBoardEditorInstance.BBValues)
+                {
+                    if (bbValues.Key == this.BBKey)
+                    {
+                        NP_BBValue = bbValues.Value.DeepCopy();
+                        NP_BBValueType = this.NP_BBValue.Type.ToString();
+                    }
+                }
+            }
+        }
+#endif
+
+        /// <summary>
+        /// 获取目标黑板对应的此处的键的值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetBlackBoardValue<t>(Blackboard blackboard)
+        {
+            return blackboard.Get<t>(this.BBKey);
+        }
+
+        /// <summary>
+        /// 获取配置的BB值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetTheBBDataValue<t>()
+        {
+            Variable<t> var = NP_BBValue as Variable<t>;
+
+            return var.Value;
+        }
+
+        /// <summary>
+        /// 自动根据预先设定的值设置值
+        /// </summary>
+        /// <param name="blackboard"/>要修改的黑板
+        public void SetBlackBoardValue(Blackboard blackboard)
+        {
+            blackboard.Set(BBKey, NP_BBValue);
+
+            
+        }
+     }</t></t></t></t></t></string></code></pre>
+<h4 class="wp-block-heading">5.存储Action的数据基类</h4>
+<pre class="wp-block-code"><code>[BoxGroup("用于包含Action的数据类"), GUIColor(0.961f, 0.902f, 0.788f, 1f)]
+    [HideLabel]
+    public class NP_ClassForAction
+    {
+        /// <summary>
+        /// 归属的对象
+        /// </summary>
+        [HideInEditorMode] public object owner;
+
+        /// <summary>
+        /// 归属的运行时行为树实例
+        /// </summary>
+        [HideInEditorMode]
+        public NP_Tree BelongtoRuntimeTree;
+
+        [HideInEditorMode]
+        public System.Action Action;
+
+        [HideInEditorMode]
+        public Func<bool> Func1;
+
+        [HideInEditorMode]
+        public Func<bool, action.result=""> Func2;
+
+        /// <summary>
+        /// 获取将要执行的委托函数，也可以在这里面做一些初始化操作
+        /// </summary>
+        /// <returns></returns>
+        public virtual System.Action GetActionToBeDone()
+        {
+            return null;
+        }
+
+        public virtual System.Func<bool> GetFunc1ToBeDone()
+        {
+            return null;
+        }
+
+        public virtual System.Func<bool, action.result=""> GetFunc2ToBeDone()
+        {
+            return null;
+        }
+
+        public  Action _CreateNPBehaveAction()
+        {
+            Action action;
+
+            GetActionToBeDone();
+            if (this.Action != null)
+            {
+                 action = ReferencePool.Acquire<action>();
+                 action.SetAction(Action);
+                return action;
+            }
+
+            GetFunc1ToBeDone();
+            if (this.Func1 != null)
+            {
+                action = ReferencePool.Acquire<action>();
+                action.SetSingleFunc(Func1);
+                return action;
+            }
+
+            GetFunc2ToBeDone();
+            if (this.Func2 != null)
+            {
+                action = ReferencePool.Acquire<action>();
+                action.SetFunc1(Func2);
+                return action;
+            }
+           
+            return null;
+        }
+    }</action></action></action></bool,></bool></bool,></bool></code></pre>
+<h4 class="wp-block-heading">6.具体Action数据类 Log方法</h4>
+<pre class="wp-block-code"><code>  public class NP_LogAction : NP_TaskNodeBase
+    {
+        public override string Name =&gt; "NP_LogAction";
+
+
+        public NP_ActionNodeData data = new NP_ActionNodeData()
+        {
+            NpClassForAction = new MDDGameFramework.Runtime.NP_LogAction()
+        };
+
+
+        public override NP_NodeDataBase NP_GetNodeData()
+        {
+            return data;
+        }
+    }</code></pre>
+<h4 class="wp-block-heading">7.具体节点数据类</h4>
+<pre class="wp-block-code"><code> public class NP_ActionNodeData : NP_NodeDataBase
+    {
+        [HideInEditorMode] private Action m_ActionNode;
+
+        public NP_ClassForAction NpClassForAction;
+
+        public override Task CreateTask(object owner, NP_Tree runtimeTree)
+        {
+            NpClassForAction.owner = owner;
+            NpClassForAction.BelongtoRuntimeTree = runtimeTree;
+            m_ActionNode = NpClassForAction._CreateNPBehaveAction();
+            return m_ActionNode;
+        }
+
+        public override Node NP_GetNode()
+        {
+            return this.m_ActionNode;
+        }
+    }</code></pre>
+<pre class="wp-block-code"><code>  [HideLabel]
+    public class NP_BlackBoardConditionNodeData : NP_NodeDataBase
+    {
+        BlackboardCondition m_BlackboardCondition;
+
+        [BoxGroup("黑板条件节点配置")]
+        [LabelText("运算符号")]
+        public Operator Ope = Operator.IS_EQUAL;
+
+        [BoxGroup("黑板条件节点配置")]
+        [LabelText("终止行为")]
+        public Stops Stop = Stops.IMMEDIATE_RESTART;
+
+        public ClassForBlackboard blackboardData = new ClassForBlackboard();
+
+
+        public override Decorator CreateDecoratorNode(object m_object, NP_Tree runtimeTree, Node node)
+        {
+            this.m_BlackboardCondition = BlackboardCondition.Create(blackboardData.BBKey, Ope, blackboardData.NP_BBValue,Stop, node);
+            return this.m_BlackboardCondition;
+        }
+
+        public override Node NP_GetNode()
+        {
+            return this.m_BlackboardCondition;
+        }
+    }</code></pre>
+<h4 class="wp-block-heading">8.具体Editor节点数据类</h4>
+<pre class="wp-block-code"><code>public class NP_BlackboardConditionNode : NP_DecoratorNodeBase
+    {
+        protected override void Init()
+        {
+            base.Init();
+            nodeType = NodeType.Decorator;
+        }
+
+        public override string Name =&gt; "NP_BlackboardCondition";
+
+       
+        public NP_BlackBoardConditionNodeData data = new NP_BlackBoardConditionNodeData();
+
+        public override NP_NodeDataBase NP_GetNodeData()
+        {
+            return data;
+        }       
+    }</code></pre>
+<h3 class="wp-block-heading">Runtime简单的构建</h3>
+<p>我们在Editor阶段已经处理好了nodes数据</p>
+<p>在Runtime时我们需要关注的是数据引用关系处理的问题</p>
+<p>但本篇不做细致的处理，因为还没讲到具体实用场景</p>
+<pre class="wp-block-code"><code>    Root root;
+
+    public NPBehaveGraph np;
+
+    public void InitTree()
+    {
+        foreach (var v in np.nodes)
+        {
+            NP_NodeBase data = v as NP_NodeBase;
+
+            switch (data.nodeType)
+            {
+                case NodeType.Task:
+                    data.NP_GetNodeData().CreateTask(null, null);
+                    break;
+                case NodeType.Decorator:
+                    Node node = null;
+                    foreach (var v1 in data.Outputs)
+                    {
+                        node = (v1.Connection.node as NP_NodeBase).NP_GetNodeData().NP_GetNode();
+                    }
+
+                    data.NP_GetNodeData().CreateDecoratorNode(null, null, node);
+
+                    break;
+                case NodeType.Composite:
+                    List<node> nodes = new List<node>();
+                    foreach (var v1 in data.Outputs)
+                    {
+                        foreach (var v2 in v1.GetConnections())
+                        {
+                            nodes.Add((v2.node as NP_NodeBase).NP_GetNodeData().NP_GetNode());
+                        }
+                    }
+                    data.NP_GetNodeData().CreateComposite(nodes.ToArray());
+                    break;
+            }
+
+            if (data.Name == "根节点")
+            {
+                root = data.NP_GetNodeData().NP_GetNode() as Root;
+            }
+
+
+        }
+
+        //设置根节点
+        root.SetRoot(root);
+
+        root.Start();
+    }</node></node></code></pre>
+<h2 class="wp-block-heading">Editor痛点处理</h2>
+<h3 class="wp-block-heading">1.基于Odin的MenuTree制作</h3>
+<h3 class="wp-block-heading">2.节点数据配置规范</h3>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-461" data-src="/wordpress/wp-content/uploads/2021/10/image-4.png" decoding="async" height="430" loading="lazy" sizes="(max-width: 530px) 100vw, 530px" src="/wordpress/wp-content/uploads/2021/10/image-4.png" srcset="/wordpress/wp-content/uploads/2021/10/image-4.png 530w, /wordpress/wp-content/uploads/2021/10/image-4-300x243.png 300w" width="530"/></figure>
+<noscript><img alt="" class="wp-image-461" decoding="async" height="430" loading="lazy" sizes="(max-width: 530px) 100vw, 530px" src="/wordpress/wp-content/uploads/2021/10/image-4.png" srcset="/wordpress/wp-content/uploads/2021/10/image-4.png 530w, /wordpress/wp-content/uploads/2021/10/image-4-300x243.png 300w" width="530"/></noscript>
+<h3 class="wp-block-heading">3.实时黑板数据库</h3>
+<h2 class="wp-block-heading">NPBehave性能优化及扩展(除了Debug支持，runtime扩展其余已经做好，感兴趣的兄弟可以自行查阅MDDSkillEngine源码)</h2>
+<h3 class="wp-block-heading">1.解决黑板赋值GC问题</h3>
+<h3 class="wp-block-heading">2.事件缓存</h3>
+<h3 class="wp-block-heading">3.行为树节点池化</h3>
+<h3 class="wp-block-heading">4.Runtime时动态扩展行为树</h3>
+<h3 class="wp-block-heading">5.Debug可视化支持--基于XNode</h3>
+<p></p>
+<p></p>
+<p>内容待填充出去散步先.........</p>
+<!--<div class="oshimai"></div>-->
+<!--<h2 style="opacity:0;max-height:0;margin:0">Comments</h2>--><!-- 评论跳转标记 -->
+</div><!-- .entry-content -->
+<footer class="post-footer">
+<div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow" target="_blank"><i aria-hidden="true" class="fa fa-creative-commons"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+<div class="post-tags">
+</div>
+
+<div class="post-share">
+<div class="social-share sharehidden"></div>
+<i class="iconfont show-share icon-forward"></i>
+</div>
+</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+<div class="toc-container"><div class="toc"></div></div>
+<section class="post-squares nextprev">
+<div class="post-nepre half previous">
+<a href="/npbehave-%e8%a1%8c%e4%b8%ba%e6%a0%91%e5%9f%ba%e7%a1%80%e6%9e%b6%e6%9e%84/" rel="prev"><div class="background lazyload" data-src="/wordpress/wp-content/uploads/2021/09/NPBehave行为树架构-1024x616.png" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Previous Post</span><div class="info"><h3>NPBehave-行为树基础架构</h3><hr/></div></a> </div>
+<div class="post-nepre half next">
+<a href="/%e8%b0%88%e6%88%91%e5%af%b9%e6%b8%b8%e6%88%8f%e6%95%88%e6%9e%9c%e7%9a%84%e7%90%86%e8%a7%a3/" rel="next"><div class="background lazyload" data-src="/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Next Post</span><div class="info"><h3>谈我对游戏效果的理解</h3><hr/></div></a> </div>
+</section>
+<section class="author-profile">
+<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a class="profile gravatar" href="/author/maodaodao/"><img alt="maodaodao" height="70" itemprop="image" src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg" width="70"/></a>
+<div class="meta">
+<span class="title">Author</span>
+<h3 itemprop="name">
+<a href="/author/maodaodao/" itemprop="url" rel="author">maodaodao</a>
+</h3>
+</div>
+</div>
+<hr/>
+<p><i class="iconfont icon-write"></i>记录历程，整理思路，共享知识，分享思维。</p>
+</section>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->
+</div><!-- #page Pjax container-->
+<footer class="site-footer" id="colophon" role="contentinfo">
+<div class="site-info" theme-info="Sakura v3.3.9">
+<div class="footertext">
+<div class="img-preload">
+<img src="/assets/vendor/96c4e21a0aebe8c718.svg"/>
+<img src="/assets/vendor/ecc860e56ba0f62927.svg"/>
+</div>
+<p style="color: #666666;"><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2021020192号-1</a>
+</p>
+</div>
+<div class="footer-device">
+<p style="font-family: 'Ubuntu', sans-serif;">
+<span style="color: #b9b9b9;">
+												Theme <a href="https://2heng.xin/theme-sakura/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Mashiro</a>
+</span>
+</p>
+</div>
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<div class="openNav no-select">
+<div class="iconflat no-select">
+<div class="icon"></div>
+</div>
+<div class="site-branding">
+<h1 class="site-title"><a href="/">心界</a></h1>
+</div>
+</div><!-- m-nav-bar -->
+</section><!-- #section -->
+<!-- m-nav-center -->
+<div id="mo-nav">
+<div class="m-avatar">
+<img src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg"/>
+</div>
+<div class="m-search">
+<form action="/search/" class="m-search-form" method="get" role="search">
+<input class="m-search-input" name="s" placeholder="搜索..." required="" type="search"/>
+</form>
+</div>
+<ul class="menu" id="menu-menu-2"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul> </div><!-- m-nav-center end -->
+<a class="cd-top faa-float animated"></a>
+<button id="moblieGoTop" title="Go to top"><i aria-hidden="true" class="fa fa-chevron-up"></i></button>
+<button id="moblieDarkLight"><i aria-hidden="true" class="fa fa-moon-o"></i></button>
+<!-- search start -->
+<form action="/search/" class="js-search search-form search-form--modal" method="get" role="search">
+<div class="search-form__inner">
+<div class="micro">
+<p class="micro mb-">想要找点什么呢？</p>
+<i class="iconfont icon-search"></i>
+<input class="text-input" name="s" placeholder="搜索" required="" type="search"/>
+</div>
+</div>
+<div class="search_close"></div>
+</form>
+<!-- search end -->
+<script id="js_lib-js" src="/wordpress/wp-content/themes/Sakura-master/cdn/js/lib.js?ver=3.3.9" type="text/javascript"></script>
+<script id="app-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var Poi = {"pjax":"","movies":"close","windowheight":"auto","codelamp":"close","ajaxurl":"/wordpress/wp-admin/admin-ajax.php","order":"asc","formpostion":"bottom","reply_link_version":"new","api":"/wp-json/","nonce":"4b6889b8e9","google_analytics_id":"","gravatar_url":"gravatar.2heng.xin/avatar"};
+/* ]]> */
+</script>
+<script id="app-js" src="/wordpress/wp-content/themes/Sakura-master/js/sakura-app.js?ver=3.3.9" type="text/javascript"></script>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+<div class="keys">
+<span id="open-skinMenu">
+<i class="iconfont icon-gear inline-block rotating"></i>  切换主题 | SCHEME TOOL 
+        </span>
+</div>
+</div>
+<div class="skin-menu no-select">
+<div class="theme-controls row-container">
+<ul class="menu-list">
+<li id="white-bg">
+<i aria-hidden="true" class="fa fa-television"></i>
+</li><!--Default-->
+<li id="sakura-bg">
+<i class="iconfont icon-sakura"></i>
+</li><!--Sakura-->
+<li id="gribs-bg">
+<i aria-hidden="true" class="fa fa-slack"></i>
+</li><!--Grids-->
+<li id="KAdots-bg">
+<i class="iconfont icon-dots"></i>
+</li><!--Dots-->
+<li id="totem-bg">
+<i aria-hidden="true" class="fa fa-superpowers"></i>
+</li><!--Orange-->
+<li id="pixiv-bg">
+<i class="iconfont icon-pixiv"></i>
+</li><!--Start-->
+<li id="bing-bg">
+<i class="iconfont icon-bing"></i>
+</li><!--Bing-->
+<li id="dark-bg">
+<i aria-hidden="true" class="fa fa-moon-o"></i>
+</li><!--Night-->
+</ul>
+</div>
+<div class="font-family-controls row-container">
+<button class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()" type="button">Serif</button>
+<button class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()" type="button">Sans Serif</button>
+</div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="aplayer" data-fixed="true" data-id="2288037900" data-server="netease" data-theme="orange" data-type="playlist" id="aplayer-float" style="z-index: 100;">
+</div>
+<script defer="True" src="/assets/static-restore.js"></script></body>
+</html>

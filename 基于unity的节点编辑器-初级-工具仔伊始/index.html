@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+
+<!-- 
+Theme by Mashiro
+                      /^--^\     /^--^\     /^--^\
+                      \____/     \____/     \____/
+                     /      \   /      \   /      \
+                    |        | |        | |        |
+                     \__  __/   \__  __/   \__  __/
+|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
+| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
+########################/ /######\ \###########/ /#######################
+| | | | | | | | | | | | /| | | | /| | | | | |/ | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<title itemprop="name">基于Unity的节点编辑器-初级-工具仔伊始 – 心界</title>
+<link href="/wordpress/wp-content/themes/Sakura-master/images/favicon.ico" rel="shortcut icon"/>
+<meta content="#31363b" name="theme-color"/>
+<meta content="on" http-equiv="x-dns-prefetch-control"/>
+<meta content="max-image-preview:large" name="robots"/>
+<link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link href="/wordpress/wp-includes/css/dist/block-library/style.min.css?ver=6.5.5" id="wp-block-library-css" media="all" rel="stylesheet" type="text/css"/>
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link href="/wordpress/wp-content/themes/Sakura-master/style.css?ver=3.3.9" id="saukra_css-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/%e5%9f%ba%e4%ba%8eunity%e7%9a%84%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%88%9d%e7%ba%a7-%e5%b7%a5%e5%85%b7%e4%bb%94%e4%bc%8a%e5%a7%8b/" rel="canonical"/>
+<link href="/?p=275" rel="shortlink"/>
+<style type="text/css">
+.site-top .lower nav {display: block !important;}
+.author-profile i , .post-like a , .post-share .show-share , .sub-text , .we-info a , span.sitename , .post-more i:hover , #pagination a:hover , .post-content a:hover , .float-content i:hover{ color: #FE9600 }
+.feature i , /*.feature-title span ,*/ .download , .navigator i:hover , .links ul li:before , .ar-time i , span.ar-circle , .object , .comment .comment-reply-link , .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #FE9600 }
+::-webkit-scrollbar-thumb { background: #FE9600 }
+.download , .navigator i:hover , .link-title , .links ul li:hover , #pagination a:hover , .comment-respond input[type='submit']:hover { border-color: #FE9600 }
+.entry-content a:hover , .site-info a:hover , .comment h4 a , #comments-navi a.prev , #comments-navi a.next , .comment h4 a:hover , .site-top ul li a:hover , .entry-title a:hover , #archives-temp h3 , span.page-numbers.current , .sorry li a:hover , .site-title a:hover , i.iconfont.js-toggle-search.iconsearch:hover , .comment-respond input[type='submit']:hover, blockquote:before, blockquote:after { color: #FE9600 }
+
+#aplayer-float .aplayer-lrc-current { color: #FE9600 !important}
+
+.is-active-link::before, .commentbody:not(:placeholder-shown)~.input-label, .commentbody:focus~.input-label {
+    background-color: #FE9600 !important
+}
+
+.commentbody:focus {
+    border-color: #FE9600 !important
+}
+
+.insert-image-tips:hover, .insert-image-tips-hover{ 
+    color: #FE9600;
+    border: 1px solid #FE9600}
+
+.site-top ul li a:after {
+    background-color: #FE9600}
+
+.scrollbar,.butterBar-message {
+    background: #FE9600 !important
+}
+
+#nprogress .spinner-icon{ 
+    border-top-color: #FE9600; 
+    border-left-color: #FE9600}
+
+#nprogress .bar {
+    background: #FE9600}
+
+.changeSkin-gear,.toc{
+    background:rgba(255,255,255,0.3);
+}
+
+.entry-content th {
+    background-color: #FE9600}
+
+.post-list-thumb:nth-child(2n) .post-content-wrap {
+    float: left;
+    padding-left: 30px;
+    padding-right: 0;
+    text-align: right;
+    margin: 20px 10px 10px 0
+}
+.post-list-thumb:nth-child(2n) .post-thumb {
+    float: left
+}
+
+.post-list-thumb:nth-child(2n) .post-thumb a {
+    border-radius: 10px 0 0 10px
+}
+
+
+.post-list-thumb{opacity: 0}
+.post-list-show {opacity: 1}
+
+.centerbg{background-image: url("/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg");background-position: center center;background-attachment: inherit;}
+.rotating {
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
+}
+body.dark #main-container,body.dark .pattern-center:after,body.dark #mo-nav,body.dark .headertop-bar::after,body.dark .site-content,body.dark .comments,body.dark .site-footer{background:#31363b !important;}body.dark .pattern-center-blank,body.dark .yya,body.dark .blank,body.dark .changeSkin-gear,body.dark .toc,body.dark .search-form input{background:rgba(49,54,59,0.85);}body.dark .single-reward .reward-row{background:#bebebe;}body.dark .font-family-controls button{background-color:#828080;}body.dark .single-reward .reward-row:before{border-bottom:13px solid #bebebe;}body.dark .search-form--modal,body.dark .ins-section .ins-section-header{border-bottom:none;background:rgba(49,54,59,0.95);}body.dark .ins-section .ins-search-item:hover,body.dark .ins-section .ins-search-item.active,body.dark .ins-section .ins-search-item:hover .ins-slug,body.dark .ins-section .ins-search-item.active .ins-slug,body.dark .ins-section .ins-search-item:hover .ins-search-preview,body.dark .ins-section .ins-search-item.active .ins-search-preview,body.dark .ins-section .ins-search-item:hover header,body.dark .ins-section .ins-search-item:hover .iconfont{color:#fff;background:#31363b;}body.dark .search_close:after,body.dark .search_close:before{background-color:#eee;}body.dark .search_close:hover:after,body.dark .search_close:hover:before{background-color:#3daee9;}body.dark input.m-search-input{background:#bebebe;}body.dark .openNav .icon,body.dark .openNav .icon:after,body.dark .openNav .icon:before{background-color:#eee;}body.dark .site-header:hover{background:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .menhera-container .emoji-item:hover{color:#424952;}body.dark .entry-content p,body.dark .entry-content ul,body.dark .entry-content ol,body.dark .comments .body p,body.dark .float-content,body.dark .post-list p,body.dark .link-title{color:#bebebe !important;}body.dark .entry-title a,body.dark .post-list-thumb .post-title,body.dark .post-list-thumb,body.dark .art-content #archives .al_mon_list .al_mon,body.dark .art-content #archives .al_mon_list span,body.dark .art .art-content #archives a,body.dark .menhera-container .emoji-item{color:#bebebe;}body.dark .logolink a,body.dark .post-content a:hover,body.dark .comment .body p a{color:rgba(61,174,233,0.8) !important;}body.dark .lower li ul,body.dark .header-user-avatar:hover .header-user-menu{background:#31363b;}body.dark .header-user-menu::before,body.dark .lower li ul::before{border-color:transparent transparent #31363b transparent;}body.dark .site-top ul li a,body.dark .header-user-menu a,body.dark #mo-nav ul li a,body.dark .site-title a,body.dark header.page-header,body.dark h1.cat-title{color:#eee;}body.dark .art .art-content #archives .al_year,body.dark .comment-respond input,body.dark .comment-respond textarea,body.dark .siren-checkbox-label{color:#eee;}body.dark input[type=color]:focus,body.dark input[type=date]:focus,body.dark input[type=datetime-local]:focus,body.dark input[type=datetime]:focus,body.dark input[type=email]:focus,body.dark input[type=month]:focus,body.dark input[type=number]:focus,body.dark input[type=password]:focus,body.dark input[type=range]:focus,body.dark input[type=search]:focus,body.dark input[type=tel]:focus,body.dark input[type=text]:focus,body.dark input[type=time]:focus,body.dark input[type=url]:focus,body.dark input[type=week]:focus,body.dark textarea:focus,body.dark #mo-nav .m-search form{color:#eee;background-color:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .post-meta{color:#888;}body.dark img,body.dark .cd-top,body.dark .highlight-wrap,body.dark iframe,body.dark .entry-content .aplayer{filter:brightness(0.8);}body.dark .post-list-thumb{box-shadow:0 1px 35px -8px rgba(0,0,0,0.8);}body.dark .centerbg{background-blend-mode:hard-light;background-color:#31363b;}body.dark .notice{color:#EFF0F1;background:#232629;border:none;}body.dark h1.fes-title,body.dark h1.main-title{border-bottom:1px dashed #ababab;}body.dark .scrollbar,body.dark .butterBar p.butterBar-message{background:#3daee9 !important;}body.dark .entry-content p code{color:#eee !important;background:rgba(61,174,233,0.5) !important;}body.dark .notification,body.dark #moblieGoTop,body.dark #moblieDarkLight{color:#eee;background-color:#232629;}body.dark #moblieGoTop:hover,body.dark #moblieDarkLight:hover{background-color:#232629;opacity:.8;}body.dark .widget-area{background-color:rgba(35,38,41,0.8);}body.dark .skin-menu,body.dark .menu-list li,body.dark .widget-area .heading,body.dark .widget-area .show-hide svg,body.dark #aplayer-float,body.dark .aplayer.aplayer-fixed .aplayer-body,body.dark .aplayer .aplayer-miniswitcher,body.dark .aplayer .aplayer-pic{color:#eee;background-color:#232629 !important;}body.dark .skin-menu::after{border-color:#232629 transparent transparent transparent;}body.dark .aplayer .aplayer-list ol li .aplayer-list-author{color:#eee;}body.dark #aplayer-float .aplayer-lrc-current{color:transparent !important;}body.dark .aplayer.aplayer-fixed .aplayer-lrc{text-shadow:-1px -1px 0 #989898;}body.dark .aplayer .aplayer-list ol li.aplayer-list-light{background:rgba(61,174,233,0.5) !important;}body.dark .aplayer .aplayer-list ol li:hover{background:rgba(61,174,233,0.8) !important;}body.dark .aplayer.aplayer-fixed .aplayer-list{border:none !important;}body.dark .aplayer.aplayer-fixed .aplayer-info,body.dark .aplayer .aplayer-list ol li{border-top:none !important;}body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path,body.dark .widget-area .show-hide svg path{fill:#fafafa;}body.dark,body.dark button,body.dark input,body.dark select,body.dark textarea{color:#eee;}body.dark button,body.dark input[type=button],body.dark input[type=reset],body.dark input[type=submit]{box-shadow:none;}body.dark .entry-content th{background-color:#3daee9;}body.dark .author-profile i,body.dark .post-like a,body.dark .post-share .show-share,body.dark .sub-text,body.dark .we-info a,body.dark span.sitename,body.dark .post-more i:hover,body.dark #pagination a:hover,body.dark .post-content a:hover,body.dark .float-content i:hover{color:#3daee9;}body.dark .feature i,body.dark .feature-title span,body.dark .download,body.dark .navigator i:hover,body.dark .links ul li:before,body.dark .ar-time i,body.dark span.ar-circle,body.dark .object,body.dark .comment .comment-reply-link,body.dark .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#3daee9;}body.dark .download,body.dark .navigator i:hover,body.dark .link-title,body.dark .links ul li:hover,body.dark #pagination a:hover,body.dark .comment-respond input[type='submit']:hover{border-color:#3daee9;}body.dark .site-info a:hover,body.dark .comment h4 a,body.dark #comments-navi a.prev,body.dark #comments-navi a.next,body.dark .comment h4 a:hover,body.dark .site-top ul li a:hover,body.dark .entry-title a:hover,body.dark #archives-temp h3,body.dark span.page-numbers.current,body.dark .sorry li a:hover,body.dark .site-title a:hover,body.dark .js-toggle-search.iconsearch:hover,body.dark .comment-respond input[type='submit']:hover,body.dark blockquote:before,body.dark blockquote:after,body.dark .entry-content a{color:#3daee9 !important;}body.dark .entry-content a:hover{color:#3daee9;text-decoration:underline !important;}body.dark .is-active-link::before,body.dark .commentbody:not(:placeholder-shown) ~ .input-label,body.dark .commentbody:focus ~ .input-label{background-color:#3daee9 !important;}body.dark .commentbody:focus{border-color:#3daee9 !important;}body.dark .insert-image-tips:hover,body.dark .insert-image-tips-hover{color:#3daee9;border:1px solid #3daee9;}body.dark .site-top ul li a:after,body.dark .menu-list li:hover,body.dark .font-family-controls button.selected{background-color:#3daee9 !important;}body.dark #nprogress .spinner-icon{border-top-color:#3daee9;border-left-color:#3daee9;}body.dark #nprogress .bar{background:#3daee9;}body.dark .comment .info,body.dark .comment-respond .logged-in-as,body.dark .notification,body.dark .comment-respond .logged-in-as a,body.dark .comment-respond .logged-in-as a:hover{color:#9499a8;}body.dark .sm{color:#377292 !important;}html,#main-container,.pattern-center:after,#mo-nav,.headertop-bar::after,.site-content,.comments,.site-footer,.pattern-center-blank,.yya,.blank,.changeSkin-gear,.toc,.search-form input{transition:background 1s;}.entry-content p,.entry-content ul,.entry-content ol,.comments .body p,.float-content,.post-list p,.link-title{transition:color 1s;}body.dark::-webkit-scrollbar-thumb,body.dark::selection{background:#377292;color:#ccc;}
+</style>
+<script>
+/*Initial Variables*/
+var mashiro_option = new Object();
+var mashiro_global = new Object();
+mashiro_option.NProgressON = false;
+mashiro_option.email_domain = "";
+mashiro_option.email_name = "";
+mashiro_option.cookie_version_control = "";
+mashiro_option.qzone_autocomplete = false;
+mashiro_option.site_name = "猫刀刀个人站";
+mashiro_option.author_name = "猫刀刀";
+mashiro_option.template_url = "/wordpress/wp-content/themes/Sakura-master";
+mashiro_option.site_url = "/wordpress";
+mashiro_option.qq_api_url = "/wp-json/sakura/v1/qqinfo/json"; 
+// mashiro_option.qq_avatar_api_url = "https://api.2heng.xin/qqinfo/";
+mashiro_option.live_search = false;
+
+mashiro_option.skin_bg0 = "none";
+mashiro_option.skin_bg1 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png";
+mashiro_option.skin_bg2 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/star02.png";
+mashiro_option.skin_bg4 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/kyotoanimation.png";
+mashiro_option.skin_bg5 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/dot_orange.gif";
+mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
+mashiro_option.skin_bg7 = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png";
+
+mashiro_option.darkmode = true;
+
+mashiro_option.land_at_home = false;
+
+mashiro_option.baguetteBoxON = false;
+
+mashiro_option.clipboardCopyright = true;
+
+mashiro_option.entry_content_theme_src = "/wordpress/wp-content/themes/Sakura-master/cdn/theme/sakura.css?3.3.9";
+mashiro_option.entry_content_theme = "sakura";
+
+mashiro_option.jsdelivr_css_src = "/wordpress/wp-content/themes/Sakura-master/cdn/css/lib.css";
+mashiro_option.float_player_on = false;
+mashiro_option.meting_api_url = "/wp-json/sakura/v1/meting/aplayer";
+
+mashiro_option.cover_api = "/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg";
+
+mashiro_option.windowheight = /Mobile|Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 'fixed' : 'auto';
+/*End of Initial Variables*/
+</script>
+<style id="custom-background-css" type="text/css">
+body.custom-background { background-image: url("/wordpress/wp-content/uploads/2021/06/bg1.jpg"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+</style>
+<script type="text/javascript">
+if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+  alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+}
+</script>
+<link href="/assets/static-restore.css" rel="stylesheet"/></head>
+<body class="post-template-default single single-post postid-275 single-format-standard custom-background chinese-font">
+<div class="scrollbar" id="bar"></div>
+<section id="main-container">
+<div class="site wrapper" id="page">
+<header class="site-header no-select" role="banner">
+<div class="site-top">
+<div class="site-branding">
+<span class="site-title">
+<span class="logolink serif">
+<a href="/">
+<span class="site-name">猫刀刀个人站</span>
+</a>
+</span>
+</span>
+<!-- logo end -->
+</div><!-- .site-branding -->
+
+<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+<div class="lower"> <nav><ul class="menu" id="menu-menu-1"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul></nav><!-- #site-navigation -->
+</div>
+</div>
+</header><!-- #masthead -->
+<div class="pattern-center-blank"></div>
+<div class="pattern-center single-center">
+<div class="pattern-attachment-img lazyload" data-src="/wordpress/wp-content/uploads/2021/07/节点.png" style="background-image: url(/assets/vendor/8c901598231a1937f3.svg)"> </div>
+<header class="pattern-header single-header"><h1 class="entry-title">基于Unity的节点编辑器-初级-工具仔伊始</h1><p class="entry-census"><span><a href="/author/maodaodao/"><img src="/assets/avatar.svg"/></a></span><span><a href="/author/maodaodao/">maodaodao</a></span><span class="bull">·</span>2021-07-24<span class="bull">·</span>383 次阅读</p></header>
+</div>
+<div class="site-content" id="content">
+<div class="content-area" id="primary">
+<main class="site-main" id="main" role="main">
+<article class="post-275 post type-post status-publish format-standard has-post-thumbnail hentry category-12 category-15" id="post-275">
+<!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+<div class="entry-content">
+<p>本人在第一家公司负责剧情工作流的搭建，随想到了节点编辑器，节点编辑器对树状数据有非常强的处理能力，而游戏剧情可能有不同选项，不同的选项对应相同或者不同的剧情分支，树形结构数据可以几乎完美的承载这一类型的剧情数据。</p>
+<p>节点编辑器的能力远不止于编辑剧情。</p>
+<p id="剧情编辑器">在下面我将给出列出一个基于unity实现节点编辑器的基本思路。</p>
+<p>基本思路最初来源：感谢这位老哥的搬运，<a href="https://blog.csdn.net/u010019717/article/details/80300136?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162715152716780274116561%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=162715152716780274116561&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-80300136.pc_v2_rank_blog_default&amp;utm_term=%E8%8A%82%E7%82%B9%E7%BC%96%E8%BE%91&amp;spm=1018.2226.3001.4450" rel="nofollow" target="_blank">在Unity中创建基于Node节点的编辑器 </a></p>
+<p>基本思路最初来源原文地址：<a href="http://gram.gs/gramlog/creating-node-based-editor-unity/" rel="nofollow" target="_blank">http://gram.gs/gramlog/creating-node-based-editor-unity/</a></p>
+<p>实现基础界面的思路大家可以移步原文地址，作者思路写的非常的清晰。</p>
+<p>我在基本界面的基础上增加以下功能</p>
+<p>1.数据编辑的接入</p>
+<p>2.放大缩小面板</p>
+<p>3.多选节点</p>
+<p>4.数据存档打包方案</p>
+<h2 class="wp-block-heading"><div class="has-toc have-toc"></div><strong>说明</strong></h2>
+<p>本人写这篇博客的主要目的是记录自己入门工具仔的首作，分享一些工具拓展的基本思路，并不是推荐大家直接使用我的源码。</p>
+<p>事实上成熟的节点编辑插件已有不少（如：xnode，<a href="https://github.com/alelievr/NodeGraphProcessor" rel="nofollow" target="_blank">NodeGraphProcessor</a>），我们在考虑做功能的时候某种程度上来说应该优先考虑更成熟的代码结构以及数据编辑框架。</p>
+<h2 class="wp-block-heading">源码</h2>
+<h3 class="wp-block-heading">NodeGraph</h3>
+<p>节点图形数据</p>
+<pre class="wp-block-code"><code>using System;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    [Serializable]
+    public class NodeGraph
+    {
+        /// <summary>
+        /// 节点大小与位置信息
+        /// </summary>
+        public Rect rect;
+        public int ID;
+
+        //状态
+        public bool isDragged;
+        public bool isSelected;
+
+        private GUIStyle style;
+        private GUIStyle defaultNodeStyle;
+        private GUIStyle selectedNodeStyle;
+
+        private Action<nodegraph> OnRemoveNode;
+
+        //输入点连接节点列表和输出点连接节点列表
+        public List<int> inPointList = new List<int>();
+        public List<int> outPointList = new List<int>();//可能之后最常用的是outPoint
+
+        //输入点和输出点
+        public ConnectionPoint inPoint;//输入点
+        public ConnectionPoint outPoint;//输出点
+
+        public NodeGraph() { }
+
+        public NodeGraph(NodeGraph nodeGraph)
+        {
+            
+        }
+
+        public NodeGraph(Vector2 position, float width, float height,
+        GUIStyle nodeStyle, GUIStyle selectedStyle, GUIStyle inPointStyle, GUIStyle outPointStyle,
+        Action<connectionpoint> OnClickInPoint, Action<connectionpoint> OnClickOutPoint,Action<nodegraph> OnClickRemoveNode,
+        int ID)
+        {
+            rect = new Rect(position.x, position.y, width, height);
+            style = nodeStyle;
+            inPoint = new ConnectionPoint(this, ConnectionPointType.In, inPointStyle, OnClickInPoint);
+            outPoint = new ConnectionPoint(this, ConnectionPointType.Out, outPointStyle, OnClickOutPoint);
+            defaultNodeStyle = nodeStyle;
+            selectedNodeStyle = selectedStyle;
+            OnRemoveNode = OnClickRemoveNode;
+            this.ID = ID;
+        }
+
+        public void InitNode(GUIStyle nodeStyle, GUIStyle selectedStyle,
+       Action<nodegraph> OnClickRemoveNode)
+        {
+            //inPoint.OnClickConnectionPoint = OnClickInPoint;
+            //outPoint.OnClickConnectionPoint = OnClickOutPoint;
+
+            style = nodeStyle;
+            defaultNodeStyle = nodeStyle;
+            selectedNodeStyle = selectedStyle;
+            OnRemoveNode = OnClickRemoveNode;
+        }
+
+
+        public void Drag(Vector2 delta)
+        {
+            rect.position += delta;
+        }
+
+        string title = "";
+
+        public void Draw()
+        {
+            Matrix4x4 matrix4X4 = GUI.matrix;
+            title = ID.ToString() + " ";
+            //title += name;
+            GUI.skin.label.fontSize = 7;
+            GUI.skin.label.fontStyle = FontStyle.Normal;
+            GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+            rect.size = (new Vector2(50f, 12.5f));
+            GUI.Box(rect, "", style);
+            GUI.Label(rect, title);
+            inPoint.Draw();
+            outPoint.Draw();
+            GUIUtility.ScaleAroundPivot(new Vector2(0.25f, 0.25f), rect.center);
+            GUI.skin.label.fontSize = 12;
+            GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+          
+            GUI.matrix = matrix4X4;
+
+
+            if (isSelected)
+            {
+                style = selectedNodeStyle;
+            }
+            else
+            {
+                style = defaultNodeStyle;
+            }
+        }
+
+
+        public bool ProcessEvents(Event e)
+        {
+            switch (e.type)
+            {
+                case EventType.MouseDown:
+                    if (e.button == 0)
+                    {
+                        if (rect.Contains(e.mousePosition))
+                        {
+                            isDragged = true;
+                            GUI.changed = true;
+                            isSelected = true;
+                            style = selectedNodeStyle;
+                            //NewEditorWindow.instance.RegisterNode(this);
+                        }
+                        else
+                        {
+                            GUI.changed = true;
+                            isSelected = false;
+                            style = defaultNodeStyle;
+                        }
+                    }
+                    break;
+                case EventType.MouseUp:
+                    isDragged = false;
+                    break;
+
+                case EventType.MouseDrag:
+                    if (e.button == 0 &amp;&amp; isDragged)
+                    {
+                        Drag(e.delta);
+                        e.Use();
+                        return true;
+                    }
+                    break;
+            }
+
+            return false;
+        }
+
+    }
+}
+</nodegraph></nodegraph></connectionpoint></connectionpoint></int></int></int></int></nodegraph></code></pre>
+<h3 class="wp-block-heading">Connection</h3>
+<p>节点之间的连接线数据类</p>
+<pre class="wp-block-code"><code>using System;
+using UnityEditor;
+using UnityEngine;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    [Serializable]
+    public class Connection
+    {
+        public ConnectionPoint inPoint;
+        public ConnectionPoint outPoint;
+        private Action<connection> OnClickRemoveConnection;
+        int i;
+
+        public Connection(ConnectionPoint inPoint, ConnectionPoint outPoint, Action<connection> OnClickRemoveConnection)
+        {
+            this.inPoint = inPoint;
+            this.outPoint = outPoint;
+            this.OnClickRemoveConnection = OnClickRemoveConnection;
+        }
+    }
+}
+
+</connection></connection></code></pre>
+<h3 class="wp-block-heading">ConnectionPoint</h3>
+<p>节点两侧连接点数据类</p>
+<pre class="wp-block-code"><code>using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    [Serializable]
+    public class ConnectionPoint
+    {
+        public int id;
+        public Rect rect;
+
+        public NodeGraph node;
+        private GUIStyle inPointStyle;
+        private GUIStyle outPointStyle;
+        private GUIStyle pointStyle;
+
+        public ConnectionPointType type;
+
+        public Action<connectionpoint> OnClick;
+
+        public ConnectionPoint(NodeGraph node, ConnectionPointType type, GUIStyle pointStyle, Action<connectionpoint> OnClick)
+        {
+            id = Guid.NewGuid().GetHashCode();
+
+            this.node = node;
+
+            this.pointStyle = pointStyle;
+
+            this.OnClick = OnClick;
+
+            this.type = type;
+
+            rect = new Rect(0, 0, 2.8f, 5f);
+        }
+
+        public void InitConnectionPoint(GUIStyle style, Action<connectionpoint> OnClickConnectionPoint)
+        {
+            this.pointStyle = style;
+            this.OnClick = OnClickConnectionPoint;
+        }
+
+
+        public void Draw()
+        {
+            rect.y = node.rect.y + (node.rect.height * 0.5f) - rect.height * 0.5f;
+
+            switch (type)
+            {
+                case ConnectionPointType.In:
+                    rect.x = node.rect.x - rect.width + 2f;
+                    break;
+
+                case ConnectionPointType.Out:
+                    rect.x = node.rect.x + node.rect.width - 2f;
+                    break;
+            }
+
+
+            if (GUI.Button(rect, "", pointStyle))
+            {
+                Debug.LogError(OnClick.Method.Name);
+
+                if (OnClick != null)
+                {
+                    OnClick(this);
+                }
+            }
+        }
+
+
+
+    }
+
+    [Serializable]
+    public enum ConnectionPointType
+    {
+        In,
+        Out
+    }
+}
+
+</connectionpoint></connectionpoint></connectionpoint></code></pre>
+<h3 class="wp-block-heading"> INodeData  </h3>
+<p>节点数据类接口</p>
+<pre class="wp-block-code"><code>
+namespace MDDGameFramework.MDDNodeEditor
+{
+    public interface INodeData
+    {
+        int id { get; }
+        void OnEnter();
+        void OnUpdate();
+        void OnExit();
+    }
+}
+</code></pre>
+<h3 class="wp-block-heading">NodeData</h3>
+<p>节点数据类</p>
+<pre class="wp-block-code"><code>using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    public class NodeData:INodeData
+    {
+
+        public int ID;
+
+        public string text;
+        public Dictionary<int, string=""> butDic;
+        public List<int> outPointList;
+        public List<int> intPointList;
+
+
+
+        public int id
+        {
+            get { return ID; }
+        }
+
+        public NodeData() { }
+
+        public NodeData(int id,string text,List<int> outPointList, List<int> inPointList)
+        {
+            this.ID = id;
+            this.text = text;
+            this.outPointList = outPointList;
+            this.intPointList = inPointList;
+
+            butDic = new Dictionary<int, string="">();
+        }
+
+        public void OnEnter()
+        {
+            
+        }
+
+        public void OnExit()
+        {
+            
+        }
+
+        public void OnUpdate()
+        {
+            
+        }
+    }
+
+    public class NodeDataList
+    {
+        public List<nodedata> nodeDatas = new List<nodedata>();
+
+        public NodeDataList() { }
+
+        public NodeDataList(List<nodedata> list)
+        {
+            nodeDatas = list;
+        }
+    }
+      
+}
+
+</nodedata></nodedata></nodedata></int,></int></int></int></int></int,></code></pre>
+<h3 class="wp-block-heading">NodeGraphWindow</h3>
+<p>节点绘制面板</p>
+<pre class="wp-block-code"><code>using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using System;
+using System.IO;
+using System.Linq;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    public class NodeGraphWindow : EditorWindow
+    {
+        public static EditorWindow currentWindow;
+
+        private int ID = 0;
+        private float menuBarHeight = 20f;
+        private Rect menuBar;
+        private String SaveFileName;
+        private String LoadFileName;
+
+        private GUIStyle nodeStyle;
+        private GUIStyle inPointStyle;
+        private GUIStyle outPointStyle;
+        private GUIStyle selectedNodeStyle;
+
+        private List<nodegraph> nodes;
+        private List<connection> connections;
+
+        private List<nodedata> nodeDatas;
+
+        private Vector2 drag;
+        private Vector2 offset;
+        private bool SSS;
+
+
+        private ConnectionPoint selectedInPoint;
+        private ConnectionPoint selectedOutPoint;
+
+        private Vector2 scale = new Vector2(4, 4);
+
+        [MenuItem("Tools/剧情编辑器 _&amp;W")]
+        public static void OpenScenePointEditor()
+        {
+            currentWindow = GetWindow(typeof(NodeGraphWindow));
+
+            NodeEditorWindow.OpenEditorWindow();
+        }
+
+        private void OnFocus()
+        {
+            isFocus = true;
+            if (currentWindow == null)
+            {
+                currentWindow = GetWindow(typeof(NodeGraphWindow));
+                Debug.Log("OnFocus Refresh Current Window Because of Rebuild the Script!");
+            }
+        }
+
+        private void OnEnable()
+        {
+            ID = 0;//每次开启ID归零
+
+            nodeStyle = new GUIStyle();
+            nodeStyle.normal.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/黑色.jpg") as Texture2D;
+            nodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            selectedNodeStyle = new GUIStyle();
+            selectedNodeStyle.normal.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/粉色.jpg") as Texture2D;
+            selectedNodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            inPointStyle = new GUIStyle();
+            inPointStyle.normal.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/水泡泡.jpg") as Texture2D;
+            inPointStyle.active.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/水泡泡.jpg") as Texture2D;
+            //inPointStyle.border = new RectOffset(4, 4, 12, 12);
+
+            outPointStyle = new GUIStyle();
+            outPointStyle.normal.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/水泡泡.jpg") as Texture2D;
+            outPointStyle.active.background = EditorGUIUtility.Load("Assets/PlotEditor/Picture/水泡泡.jpg") as Texture2D;
+            //outPointStyle.border = new RectOffset(4, 4, 12, 12);
+        }
+
+        private void OnGUI()
+        {
+            Matrix4x4 oldMatrix = GUI.matrix;
+            GUIUtility.ScaleAroundPivot(scale, new Vector2(position.width / 2, position.height / 2));
+            ProcessNodeEvents(Event.current);
+            ProcessEvents(Event.current);
+            DrawGrid(20, 0.2f, Color.black);
+            DrawGrid(100, 0.4f, Color.black);
+            DrawNodes();
+            DrawConnections();
+            DrawConnectionLine(Event.current);
+            DrawRectEvent(Event.current);
+            GUI.matrix = oldMatrix;
+            DrawMenuBar();
+            if (GUI.changed) Repaint();
+        }
+
+        private void DrawNodes()//通过 nodes List 的数据绘画出节点 
+        {
+            if (nodes != null)
+            {
+                for (int i = 0; i &lt; nodes.Count; i++)
+                {
+                    nodes[i].Draw();
+                }
+            }
+        }
+
+        bool isFocus;       
+
+        Vector3 begin;
+        bool beginRect = false;
+        bool firstRect = true;
+        private void ProcessEvents(Event e)//  编辑器的各种点击事件处理
+        {
+            drag = Vector2.zero;          
+            switch (e.type)
+            {
+                case EventType.MouseDown:
+                    if (e.button == 1 &amp;&amp; !SSS)
+                    {
+                        ProcessContextMenu(e.mousePosition);
+                    }
+                    break;
+                case EventType.MouseDrag:
+                    if (e.button == 0)
+                    {
+                        drag = e.delta;
+                        if (isFocus)
+                        {
+                            OnDrag(Vector2.zero);
+                            isFocus = false;
+                        }
+                        else
+                        {
+                            OnDrag(drag);
+                        }
+                    }
+
+                    break;
+                case EventType.KeyDown:
+                    if (e.keyCode.ToString() == "Q")
+                    {
+                        OnClickAddNode(e.mousePosition);
+                    }
+                    break;
+                case EventType.ScrollWheel:
+                    //e.delta.normalized.y 下滑为1, 上滚为-1
+                    if (e.delta.normalized.y &lt; 0 &amp;&amp; scale.x &lt; 4)
+                    {
+                        scale += new Vector2(0.08f, 0.08f);
+                    }
+                    else if (e.delta.normalized.y &gt; 0 &amp;&amp; scale.x &gt; 1.1)
+                    {
+                        scale -= new Vector2(0.08f, 0.08f);
+                    }
+                    break;
+            }
+        }
+
+        //返回框内的节点
+        private bool ReturnInsert(float x, float x1, float value)
+        {
+            bool isIn = false;
+            if (x &gt;= x1)
+            {
+                if (value &lt; x &amp;&amp; value &gt;= x1)
+                {
+                    isIn = true;
+                }
+                else
+                {
+                    isIn = false;
+
+                }
+            }
+            else
+            {
+                if (value &lt; x1 &amp;&amp; value &gt;= x)
+                {
+                    isIn = true;
+                }
+                else
+                {
+                    isIn = false;
+                }
+            }
+
+            return isIn;
+        }
+
+
+        private void DrawRectEvent(Event e)
+        {
+            if (nodes == null)
+                return;
+
+            if (e.type == EventType.KeyDown)
+            {
+                if (e.keyCode.ToString() == "A")
+                {
+                    beginRect = true;
+                }
+            }
+
+            if (e.type == EventType.KeyUp &amp;&amp; e.keyCode.ToString() == "A")
+            {
+                beginRect = false;
+                firstRect = true;
+
+
+                for (int i = 0; i &lt; nodes.Count; i++)
+                {
+                    if (ReturnInsert(begin.x, e.mousePosition.x, nodes[i].rect.center.x) &amp;&amp; ReturnInsert(begin.y, e.mousePosition.y, nodes[i].rect.center.y))
+                    {
+                        nodes[i].isSelected = true;
+                    }
+                    else
+                    {
+                        nodes[i].isSelected = false;
+                    }
+                }
+            }
+            if (beginRect)
+            {
+                if (firstRect)
+                {
+                    begin = e.mousePosition;
+                    firstRect = false;
+                }
+                DrawRect(begin, e.mousePosition);
+            }
+        }
+
+        private void ProcessContextMenu(Vector2 mousePosition)//右键弹出 上下文菜单  （非节点）
+        {
+            GenericMenu genericMenu = new GenericMenu();
+            genericMenu.AddItem(new GUIContent("Add node"), false, () =&gt; OnClickAddNode(mousePosition));
+            genericMenu.ShowAsContext();
+        }
+
+
+        private void ProcessNodeEvents(Event e)//点击节点的事件处理
+        {
+            if (nodes != null)
+            {
+                for (int i = nodes.Count - 1; i &gt;= 0; i--)
+                {
+                    bool guiChanged = nodes[i].ProcessEvents(e);
+                    if (nodes[i].isSelected)
+                    {
+                        foreach (var v in nodeDatas)
+                        {
+                            if (v.id == nodes[i].ID)
+                            {
+                                NodeEditorWindow.nodeEditorWindow.RegisterNode(nodeDatas[i]);
+                            }
+                        }
+
+                      
+                    }
+                    if (nodes[i].isSelected &amp;&amp; e.keyCode.ToString() == "F" &amp;&amp; e.type == EventType.KeyDown)
+                    {
+                        //OnClickAddNode(e.mousePosition);
+                        ID += 1;
+
+                        //nodes.Add(new NodeGraph(e.mousePosition, nodes[i], nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode, ID));
+                    }
+                    if (nodes[i].isSelected &amp;&amp; e.keyCode.ToString() == "Delete" &amp;&amp; e.type == EventType.KeyDown)
+                    {
+                        OnClickRemoveNode(nodes[i]);
+                    }
+                    if (e.button == 1 &amp;&amp; nodes[i].isSelected &amp;&amp; nodes[i].rect.Contains(e.mousePosition))
+                    {
+                        SSS = true;
+                        ProcessContextMenuNode(nodes[i]);
+                    }
+                    if (e.isScrollWheel)
+                    {
+                        SSS = false;
+                    }
+                    if (guiChanged)
+                    {
+                        GUI.changed = true;
+                    }
+                }
+            }
+        }
+
+        private void ProcessContextMenuNode(NodeGraph node)
+        {
+            GenericMenu genericMenu = new GenericMenu();
+            genericMenu.AddItem(new GUIContent("Remove node"), false, () =&gt; OnClickRemoveNode(node));
+            genericMenu.ShowAsContext();
+        }
+
+        private void OnClickAddNode(Vector2 mousePosition)//添加一个新的节点
+        {
+            if (nodes == null)
+            {
+                nodes = new List<nodegraph>();
+                nodeDatas = new List<nodedata>();
+            }
+            ID += 1;
+
+            nodes.Add(new NodeGraph(mousePosition, 200, 50, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode, ID));
+            nodeDatas.Add(new NodeData(ID,"",nodes[nodes.Count-1].outPointList, nodes[nodes.Count - 1].inPointList));
+        }
+
+        [System.Obsolete]
+        private void DrawConnections()//绘画 贝塞尔曲线
+        {
+            if (connections != null)
+            {
+                for (int i = 0; i &lt; connections.Count; i++)
+                {
+                    DrawC(connections[i].inPoint, connections[i].outPoint, connections[i]);
+                }
+            }
+        }
+        [Obsolete]
+        public void DrawC(ConnectionPoint inPoint, ConnectionPoint outPoint, Connection connectionT)
+        {
+            Handles.DrawBezier(
+                inPoint.rect.center,
+                outPoint.rect.center,
+                inPoint.rect.center + Vector2.left * 12.5f,
+                outPoint.rect.center - Vector2.left * 12.5f,
+                Color.white,
+                null,
+                0.5f
+            );
+
+            if (Handles.Button((inPoint.rect.center + outPoint.rect.center) * 0.5f, Quaternion.identity, 1, 8, Handles.RectangleCap))
+            {
+                OnClickRemoveConnection(connectionT);
+            }
+        }
+
+
+
+        private void OnClickInPoint(ConnectionPoint inPoint)//点击input节点
+        {
+            selectedInPoint = inPoint;
+
+            if (selectedOutPoint != null)//如果此时另一实时索引点不为空  则创建连接
+            {
+                if (selectedOutPoint.node != selectedInPoint.node)
+                {
+                    CreateConnection();
+                    ClearConnectionSelection();
+                }
+                else
+                {
+                    ClearConnectionSelection();
+                }
+            }
+        }
+        private void OnClickOutPoint(ConnectionPoint outPoint)//点击output节点
+        {
+            selectedOutPoint = outPoint;
+
+            if (selectedInPoint != null)//如果此时另一实时索引点不为空  则创建连接
+            {
+                if (selectedOutPoint.node != selectedInPoint.node)
+                {
+                    CreateConnection();
+                    ClearConnectionSelection();
+                }
+                else
+                {
+                    ClearConnectionSelection();
+                }
+            }
+        }
+
+        private void CreateConnection()// 正式 创建一条新的贝塞尔曲线
+        {
+            if (connections == null)
+            {
+                connections = new List<connection>();
+            }
+
+            connections.Add(new Connection(selectedInPoint, selectedOutPoint, OnClickRemoveConnection));
+
+            //selectedOutPoint.node.OutString.Add("");
+            //确立创建贝塞尔曲线之后的索引关系
+            selectedInPoint.node.inPointList.Add(selectedOutPoint.node.ID);
+            selectedOutPoint.node.outPointList.Add(selectedInPoint.node.ID);
+
+            if (selectedOutPoint.type == ConnectionPointType.Out)
+            {
+                foreach (var v in nodeDatas)
+                {
+                    if (v.id == selectedOutPoint.node.ID)
+                    {
+                        v.butDic.Add(selectedInPoint.node.ID, "");
+                    }
+                }
+            }
+            else if (selectedInPoint.type == ConnectionPointType.Out)
+            {
+                foreach (var v in nodeDatas)
+                {
+                    if (v.id == selectedInPoint.node.ID)
+                    {
+                        v.butDic.Add(selectedOutPoint.node.ID, "");
+                    }
+                }
+            }
+
+        }
+
+        private void OnClickRemoveConnection(Connection connection)//移除节点之间的关联曲线
+        {
+            //同时移除相对应的选项文本
+            //connection.outPoint.node.r.Remove(connection.outPoint.node.OutString[connection.outPoint.node.outPointList.IndexOf(connection.inPoint.node.ID)]);
+
+            // 删除贝塞尔曲线的同时删除所连两端节点的索引关系
+            connection.outPoint.node.outPointList.Remove(connection.inPoint.node.ID);
+            connection.inPoint.node.inPointList.Remove(connection.outPoint.node.ID);
+
+            foreach (var v in nodeDatas)
+            {
+                if (v.id == connection.outPoint.node.ID)
+                {
+                    v.butDic.Remove(connection.inPoint.node.ID);
+                }
+            }
+
+            connections.Remove(connection);
+        }
+
+
+        private void OnClickRemoveNode(NodeGraph node)//移除 整个节点
+        {
+            if (connections != null)
+            {
+                List<connection> connectionsToRemove = new List<connection>();
+
+                for (int i = 0; i &lt; connections.Count; i++)
+                {
+                    if (connections[i].inPoint == node.inPoint || connections[i].outPoint == node.outPoint)
+                    {
+                        connectionsToRemove.Add(connections[i]);
+                    }
+                }
+
+                for (int i = 0; i &lt; connectionsToRemove.Count; i++)
+                {
+                    OnClickRemoveConnection(connectionsToRemove[i]);
+                }
+
+                connectionsToRemove = null;
+            }
+
+            nodes.Remove(node);
+        }
+
+
+        private void ClearConnectionSelection()//清除 实时操作索引点
+        {
+            selectedInPoint = null;
+            selectedOutPoint = null;
+        }
+
+        private void OnDrag(Vector2 delta)//用于实时拖动整个面板
+        {
+            drag = delta;
+
+            if (nodes != null)
+            {
+                for (int i = 0; i &lt; nodes.Count; i++)
+                {
+                    nodes[i].Drag(delta);
+                }
+            }
+            GUI.changed = true;
+        }
+
+        private void DrawConnectionLine(Event e)//增强操作体验用  实时绘画鼠标所指位置的贝塞尔曲线
+        {
+            if (selectedInPoint != null &amp;&amp; selectedOutPoint == null)
+            {
+                Handles.DrawBezier(
+                    selectedInPoint.rect.center,
+                    e.mousePosition,
+                    selectedInPoint.rect.center + Vector2.left * 12.5f,
+                    e.mousePosition - Vector2.left * 12.5f,
+                    Color.white,
+                    null,
+                    0.5f
+                );
+
+                GUI.changed = true;
+            }
+
+            if (selectedOutPoint != null &amp;&amp; selectedInPoint == null)
+            {
+                Handles.DrawBezier(
+                    selectedOutPoint.rect.center,
+                    e.mousePosition,
+                    selectedOutPoint.rect.center - Vector2.left * 12.5f,
+                    e.mousePosition + Vector2.left * 12.5f,
+                    Color.white,
+                    null,
+                    0.5f
+                );
+
+                GUI.changed = true;
+            }
+        }
+
+        //private Vector2 scale = new Vector2(4, 4);
+        private void DrawGrid(float gridSpacing, float gridOpacity, Color gridColor)//绘制背景网格方法
+        {
+            int widthDivs = Mathf.CeilToInt(position.width / gridSpacing);
+            int heightDivs = Mathf.CeilToInt(position.height / gridSpacing);
+
+            Handles.BeginGUI();
+            Handles.color = new Color(gridColor.r, gridColor.g, gridColor.b, gridOpacity);
+            //GUIUtility.ScaleAroundPivot(scale,new Vector2(position.width/2,position.height/2));
+            offset += drag * 0.5f;
+            Vector3 newOffset = new Vector3(offset.x % gridSpacing, offset.y % gridSpacing, 0);
+
+            for (int i = 0; i &lt; widthDivs; i++)
+            {
+                Handles.DrawLine(new Vector3(gridSpacing * i, -gridSpacing, 0) + newOffset, new Vector3(gridSpacing * i, position.height, 0f) + newOffset);
+            }
+
+            for (int j = 0; j &lt; heightDivs; j++)
+            {
+                Handles.DrawLine(new Vector3(-gridSpacing, gridSpacing * j, 0) + newOffset, new Vector3(position.width, gridSpacing * j, 0f) + newOffset);
+            }
+
+            Handles.color = Color.white;
+            Handles.EndGUI();
+        }
+
+        public void DrawRect(Vector2 beginVec2, Vector2 endVec2)
+        {
+            Vector3 x1y1 = new Vector3(beginVec2.x, beginVec2.y, 0);
+            Vector3 x2y2 = new Vector3(endVec2.x, endVec2.y, 0);
+            Vector3 x1y2 = new Vector3(beginVec2.x, endVec2.y, 0);
+            Vector3 x2y1 = new Vector3(endVec2.x, beginVec2.y, 0);
+
+            Handles.BeginGUI();
+            Handles.color = Color.white;//new Color(Color.black.r, Color.black.g, Color.black.b, 0.4f);
+            Handles.DrawLine(x1y1, x2y1);
+            Handles.DrawLine(x2y1, x2y2);
+            Handles.DrawLine(x1y2, x2y2);
+            Handles.DrawLine(x1y1, x1y2);
+            Handles.EndGUI();
+
+            // Debug.LogError($"--x1y1---{x1y1}--x2y2--{x2y2}--x1y2--{x1y2}--x2y1--{x2y1}-----------");
+
+        }
+
+        private void save()
+        {
+            NodeDataList nodeDataList = new NodeDataList(nodeDatas);
+            string cnodeDataList = LitJson.JsonMapper.ToJson(nodeDataList);
+            File.WriteAllText(Application.streamingAssetsPath + "\\..\\PlotEditor\\Plot\\" + SaveFileName +"_Client"+ ".txt", cnodeDataList);
+
+            GraphNodeData nodeData = new GraphNodeData(nodes, connections);
+            string NodeDataStr = JsonUtility.ToJson(nodeData);
+            File.WriteAllText(Application.streamingAssetsPath + "\\..\\PlotEditor\\Plot\\" + SaveFileName +".txt", NodeDataStr);
+        }
+
+        private void Load()
+        {
+            if (nodes == null)
+            {
+                nodes = new List<nodegraph>();
+            }
+            if (connections == null)
+            {
+                connections = new List<connection>();
+            }
+            nodes.Clear();
+            connections.Clear();
+            string NodeDataStr = File.ReadAllText(Application.streamingAssetsPath + "\\..\\PlotEditor\\Plot\\" + SaveFileName + ".txt");
+            GraphNodeData nodeData = JsonUtility.FromJson<graphnodedata>(NodeDataStr);
+
+            nodes = nodeData.nodes;
+            ID = nodes[nodes.Count - 1].ID;
+            for (int i = 0; i &lt; nodeData.connections.Count; i++)
+            {
+                if (connections == null)
+                {
+                    connections = new List<connection>();
+                }
+
+                connections.Add(new Connection(nodes.First(n =&gt; n.inPoint.id == nodeData.connections[i].inPoint.id).inPoint,
+                    nodes.First(n =&gt; n.outPoint.id == nodeData.connections[i].outPoint.id).outPoint, OnClickRemoveConnection));
+            }
+
+            for (int i = 0; i &lt; nodeData.nodes.Count; i++)
+            {
+                nodes[i].inPoint.node = nodes[i];
+                nodes[i].inPoint.InitConnectionPoint(inPointStyle, OnClickInPoint);
+                nodes[i].outPoint.node = nodes[i];
+                nodes[i].outPoint.InitConnectionPoint(outPointStyle, OnClickOutPoint);
+                nodes[i].InitNode(nodeStyle, selectedNodeStyle, OnClickRemoveNode);
+            }
+
+            string cNodeDataStr = File.ReadAllText(Application.streamingAssetsPath + "\\..\\PlotEditor\\Plot\\" + SaveFileName + "_Client" + ".txt");
+            NodeDataList nodeDataList = LitJson.JsonMapper.ToObject<nodedatalist>(cNodeDataStr);
+            nodeDatas = nodeDataList.nodeDatas;
+        }
+
+
+        private void DrawMenuBar()//  save  load  绘制方法 以及方法触发
+        {
+            menuBar = new Rect(0, 0, position.width, menuBarHeight);
+
+            GUILayout.BeginArea(menuBar, EditorStyles.toolbar);
+            GUILayout.BeginHorizontal();
+
+
+
+            if (GUILayout.Button(new GUIContent("Save"), EditorStyles.toolbarButton, GUILayout.Width(35)))
+            {
+                //SaveStoryWindow.OpenSavePrefabWindow(save);
+                bool isSave = EditorUtility.DisplayDialog("二次确认", "是否保存当前文本", "确定", "取消");
+                if (isSave)
+                {
+                    save();
+                }
+                else
+                {
+                    Debug.Log("<color=red>取消保存");
+                }
+            }
+
+            GUILayout.Space(5);
+            if (GUILayout.Button(new GUIContent("Load"), EditorStyles.toolbarButton, GUILayout.Width(35)))
+            {
+                //LoadStoryWindow.OpenLoadPrefabWindow(Load);
+                bool isLoad = EditorUtility.DisplayDialog("二次确认", $"是否加载剧情 {SaveFileName} 的文本", "确定", "取消");
+                if (isLoad)
+                {
+                    Load();
+                }
+                else
+                {
+                    Debug.Log("<color=red>取消加载");
+                }
+            }
+
+            GUI.skin.label.alignment = TextAnchor.UpperLeft;
+            SaveFileName = EditorGUILayout.TextField("文件名", SaveFileName);
+            GUILayout.EndArea();
+        }
+
+        void OnInspectorUpdate()
+        {
+            this.Repaint();
+        }
+
+    }   
+}
+
+
+</color=red></color=red></nodedatalist></connection></graphnodedata></connection></nodegraph></connection></connection></connection></nodedata></nodegraph></nodedata></connection></nodegraph></code></pre>
+<h3 class="wp-block-heading">NodeEditorWindow</h3>
+<p>节点数据编辑面板</p>
+<pre class="wp-block-code"><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    public class NodeEditorWindow : EditorWindow
+    {
+        public static NodeEditorWindow nodeEditorWindow;
+
+        /////////////////////////
+
+        public NodeData nodeData;
+
+        /////////////////////////
+
+
+        /////////////////////////
+       
+
+        /////////////////////////
+
+        public static void OpenEditorWindow()
+        {
+            NodeEditorWindow window = (NodeEditorWindow)EditorWindow.GetWindow(typeof(NodeEditorWindow), false, "编辑窗口");
+
+            window.Show();
+
+            NodeEditorWindow.nodeEditorWindow = window;
+        }
+
+
+        public void RegisterNode(NodeData nodeData)
+        {
+            this.nodeData = nodeData;
+        }
+
+        private void RefreshNodeData()
+        {
+            
+        }
+
+        void OutPassageWay()//跳转通路 动态初始化 选页卡数据传输
+        {
+            if (nodeData != null)
+            {
+                for (int i = 0; i &lt; nodeData.butDic.Count; i++)
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(10);
+                    GUI.skin.label.alignment = TextAnchor.UpperLeft;
+                    GUI.skin.label.fontSize = 13;
+                    GUILayout.Label("跳转至" + nodeData.outPointList[i].ToString() + "节点");
+                    nodeData.butDic[nodeData.outPointList[i]] = EditorGUILayout.TextArea(nodeData.butDic[nodeData.outPointList[i]], GUILayout.Width(270));
+                    GUILayout.Space(90);
+                    GUILayout.EndHorizontal();
+                }
+            }
+
+        }
+
+        GUILayoutOption[] 文本框GUI = { GUILayout.MaxWidth(160), GUILayout.MaxHeight(25) };
+
+        public void OnGUI()
+        {
+            GUILayout.BeginVertical();
+
+            if(nodeData != null)
+            nodeData.ID = int.Parse(EditorGUILayout.TextArea(nodeData.ID.ToString(), 文本框GUI));
+
+            OutPassageWay();
+
+            GUILayout.EndVertical();
+        }
+
+        void OnInspectorUpdate()
+        {
+            //Debug.Log("窗口面板的更新");
+            //这里开启窗口的重绘，不然窗口信息不会刷新
+            this.Repaint();
+        }
+    }
+}
+
+
+</code></pre>
+<h3 class="wp-block-heading">GraphNodeData</h3>
+<p>节点图形数据存储包</p>
+<pre class="wp-block-code"><code>using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace MDDGameFramework.MDDNodeEditor
+{
+    [Serializable]
+    public class GraphNodeData//节点可视化数据存储模版
+    {
+        public List<nodegraph> nodes = new List<nodegraph>();
+        public List<connection> connections = new List<connection>();
+
+        public GraphNodeData() { }
+
+        public GraphNodeData(List<nodegraph> Enodes, List<connection> Econnections)
+        {
+            for (int i = 0; i &lt; Enodes.Count; i++)
+            {
+                nodes.Add(Enodes[i]);
+            }
+
+            if (Econnections != null)
+            {
+                for (int i = 0; i &lt; Econnections.Count; i++)
+                {
+                    connections.Add(Econnections[i]);
+                }
+            }
+        }
+    }
+}
+
+</connection></nodegraph></connection></connection></nodegraph></nodegraph></code></pre>
+<h2 class="wp-block-heading">小结-需要注意的地方</h2>
+<h3 class="wp-block-heading">引用关系处理</h3>
+<p>处理图形界面的序列化与反序列时需要注意引用关系的重新建立</p>
+<p>因为在序列化再反序列化的过程中引用关系会丢失</p>
+<p>同时在写代码的过程中，一定要注意值类型，引用类型数据的引用关系处理</p>
+<p>事实上编辑任何数据的时候，我们都应该关注深拷贝，浅拷贝，直接引用的使用区别。</p>
+<p>如果没有理清，很可能会在编辑数据过程中产生逻辑上的混乱</p>
+<h3 class="wp-block-heading">数据分离</h3>
+<p>要关注数据与界面的数据分离，界面是界面的数据，节点数据是节点数据本身的数据</p>
+<p>在游戏实际运行中，我们一般只需要我们编辑的节点数据</p>
+<p>所以在存储数据时，我们有两份文件，一份是图形数据存档，一份是纯节点数据存档。</p>
+<h3 class="wp-block-heading">序列化方式</h3>
+<p>因为绘制界面我们用了大量的rect等unity原生类型，所以序列化界面的过程我直接选用了unity内置的json处理器</p>
+<p>但是 unity内置的json处理器功能除了支持unity原生类的序列化在其他的方面的支持是在拉了，例如不支持序列化字典。</p>
+<p>所以序列化节点数据的时候我接入了litjson，同时修改了一下litjson的源码让litjson反序列化字典是支持key 为int float等类型数据。</p>
+<p>处理编辑后的数据还有多种方式以及改良空间。</p>
+<h2 class="wp-block-heading">节点编辑的意义</h2>
+<p>节点编辑是数据可视化编辑的一种方式，比如在编辑剧情时，就比用表格配置id控制跳转逻辑直观1w倍</p>
+<p>它的本质是对各种数据编辑的一种方式，线性结构，树，图，流程逻辑，节点编辑都可以有良好的表现</p>
+<p>现在已经有不少小伙伴以此为基准，做出了技能编辑器，剧情编辑器，行为树等插件。</p>
+<h2 class="wp-block-heading">展望</h2>
+<p>后续本人还是会以这个这个编辑器为基准，继续拓展，分享一下剧情文本如何适配动画，选项逻辑如何适配动画进度，如何让一个游戏的剧情流成型，多种剧情方式如何适配（剧情战，主线剧情）等。</p>
+<p>本人也在慢慢向泛用技能编辑器进军，因为入行及接触了节点编辑的概念，实在是想为推动改变国内游戏万物皆配表的现状尽一点绵薄之力，希望未来更直观更舒适效率的数据配置方式能够推广开来，为游戏的游戏性变的更好起到一定的助力。</p>
+<h2 class="wp-block-heading">源文件</h2>
+<p>链接：<a href="https://pan.baidu.com/s/1c0dAusKLd1sGcV-xRXXb-A" rel="nofollow" target="_blank">https://pan.baidu.com/s/1c0dAusKLd1sGcV-xRXXb-A</a><br/>提取码：1pem</p>
+<p></p>
+<!--<div class="oshimai"></div>-->
+<!--<h2 style="opacity:0;max-height:0;margin:0">Comments</h2>--><!-- 评论跳转标记 -->
+</div><!-- .entry-content -->
+<footer class="post-footer">
+<div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow" target="_blank"><i aria-hidden="true" class="fa fa-creative-commons"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+<div class="post-tags">
+</div>
+
+<div class="post-share">
+<div class="social-share sharehidden"></div>
+<i class="iconfont show-share icon-forward"></i>
+</div>
+</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+<div class="toc-container"><div class="toc"></div></div>
+<section class="post-squares nextprev">
+<div class="post-nepre half previous">
+<a href="/gf-6-%e5%af%b9%e8%b1%a1%e6%b1%a0/" rel="prev"><div class="background lazyload" data-src="/wordpress/wp-content/uploads/2021/07/gameframework-1024x481.png" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Previous Post</span><div class="info"><h3>GF-6 对象池</h3><hr/></div></a> </div>
+<div class="post-nepre half next">
+<a href="/gf-7-%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f/" rel="next"><div class="background lazyload" data-src="/wordpress/wp-content/uploads/2021/07/gameframework-1024x481.png" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Next Post</span><div class="info"><h3>GF-7 文件</h3><hr/></div></a> </div>
+</section>
+<section class="author-profile">
+<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a class="profile gravatar" href="/author/maodaodao/"><img alt="maodaodao" height="70" itemprop="image" src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg" width="70"/></a>
+<div class="meta">
+<span class="title">Author</span>
+<h3 itemprop="name">
+<a href="/author/maodaodao/" itemprop="url" rel="author">maodaodao</a>
+</h3>
+</div>
+</div>
+<hr/>
+<p><i class="iconfont icon-write"></i>记录历程，整理思路，共享知识，分享思维。</p>
+</section>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->
+</div><!-- #page Pjax container-->
+<footer class="site-footer" id="colophon" role="contentinfo">
+<div class="site-info" theme-info="Sakura v3.3.9">
+<div class="footertext">
+<div class="img-preload">
+<img src="/assets/vendor/96c4e21a0aebe8c718.svg"/>
+<img src="/assets/vendor/ecc860e56ba0f62927.svg"/>
+</div>
+<p style="color: #666666;"><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2021020192号-1</a>
+</p>
+</div>
+<div class="footer-device">
+<p style="font-family: 'Ubuntu', sans-serif;">
+<span style="color: #b9b9b9;">
+												Theme <a href="https://2heng.xin/theme-sakura/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Mashiro</a>
+</span>
+</p>
+</div>
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<div class="openNav no-select">
+<div class="iconflat no-select">
+<div class="icon"></div>
+</div>
+<div class="site-branding">
+<h1 class="site-title"><a href="/">心界</a></h1>
+</div>
+</div><!-- m-nav-bar -->
+</section><!-- #section -->
+<!-- m-nav-center -->
+<div id="mo-nav">
+<div class="m-avatar">
+<img src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg"/>
+</div>
+<div class="m-search">
+<form action="/search/" class="m-search-form" method="get" role="search">
+<input class="m-search-input" name="s" placeholder="搜索..." required="" type="search"/>
+</form>
+</div>
+<ul class="menu" id="menu-menu-2"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul> </div><!-- m-nav-center end -->
+<a class="cd-top faa-float animated"></a>
+<button id="moblieGoTop" title="Go to top"><i aria-hidden="true" class="fa fa-chevron-up"></i></button>
+<button id="moblieDarkLight"><i aria-hidden="true" class="fa fa-moon-o"></i></button>
+<!-- search start -->
+<form action="/search/" class="js-search search-form search-form--modal" method="get" role="search">
+<div class="search-form__inner">
+<div class="micro">
+<p class="micro mb-">想要找点什么呢？</p>
+<i class="iconfont icon-search"></i>
+<input class="text-input" name="s" placeholder="搜索" required="" type="search"/>
+</div>
+</div>
+<div class="search_close"></div>
+</form>
+<!-- search end -->
+<script id="js_lib-js" src="/wordpress/wp-content/themes/Sakura-master/cdn/js/lib.js?ver=3.3.9" type="text/javascript"></script>
+<script id="app-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var Poi = {"pjax":"","movies":"close","windowheight":"auto","codelamp":"close","ajaxurl":"/wordpress/wp-admin/admin-ajax.php","order":"asc","formpostion":"bottom","reply_link_version":"new","api":"/wp-json/","nonce":"4b6889b8e9","google_analytics_id":"","gravatar_url":"gravatar.2heng.xin/avatar"};
+/* ]]> */
+</script>
+<script id="app-js" src="/wordpress/wp-content/themes/Sakura-master/js/sakura-app.js?ver=3.3.9" type="text/javascript"></script>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+<div class="keys">
+<span id="open-skinMenu">
+<i class="iconfont icon-gear inline-block rotating"></i>  切换主题 | SCHEME TOOL 
+        </span>
+</div>
+</div>
+<div class="skin-menu no-select">
+<div class="theme-controls row-container">
+<ul class="menu-list">
+<li id="white-bg">
+<i aria-hidden="true" class="fa fa-television"></i>
+</li><!--Default-->
+<li id="sakura-bg">
+<i class="iconfont icon-sakura"></i>
+</li><!--Sakura-->
+<li id="gribs-bg">
+<i aria-hidden="true" class="fa fa-slack"></i>
+</li><!--Grids-->
+<li id="KAdots-bg">
+<i class="iconfont icon-dots"></i>
+</li><!--Dots-->
+<li id="totem-bg">
+<i aria-hidden="true" class="fa fa-superpowers"></i>
+</li><!--Orange-->
+<li id="pixiv-bg">
+<i class="iconfont icon-pixiv"></i>
+</li><!--Start-->
+<li id="bing-bg">
+<i class="iconfont icon-bing"></i>
+</li><!--Bing-->
+<li id="dark-bg">
+<i aria-hidden="true" class="fa fa-moon-o"></i>
+</li><!--Night-->
+</ul>
+</div>
+<div class="font-family-controls row-container">
+<button class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()" type="button">Serif</button>
+<button class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()" type="button">Sans Serif</button>
+</div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="aplayer" data-fixed="true" data-id="2288037900" data-server="netease" data-theme="orange" data-type="playlist" id="aplayer-float" style="z-index: 100;">
+</div>
+<script defer="True" src="/assets/static-restore.js"></script></body>
+</html>

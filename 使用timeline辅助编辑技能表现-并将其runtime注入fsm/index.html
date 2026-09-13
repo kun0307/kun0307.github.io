@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+
+<!-- 
+Theme by Mashiro
+                      /^--^\     /^--^\     /^--^\
+                      \____/     \____/     \____/
+                     /      \   /      \   /      \
+                    |        | |        | |        |
+                     \__  __/   \__  __/   \__  __/
+|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
+| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
+########################/ /######\ \###########/ /#######################
+| | | | | | | | | | | | /| | | | /| | | | | |/ | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<title itemprop="name">使用Timeline辅助编辑技能表现-并将其runtime注入FSM – 心界</title>
+<link href="/wordpress/wp-content/themes/Sakura-master/images/favicon.ico" rel="shortcut icon"/>
+<meta content="#31363b" name="theme-color"/>
+<meta content="on" http-equiv="x-dns-prefetch-control"/>
+<meta content="max-image-preview:large" name="robots"/>
+<link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link href="/wordpress/wp-includes/css/dist/block-library/style.min.css?ver=6.5.5" id="wp-block-library-css" media="all" rel="stylesheet" type="text/css"/>
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link href="/wordpress/wp-content/themes/Sakura-master/style.css?ver=3.3.9" id="saukra_css-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/%e4%bd%bf%e7%94%a8timeline%e8%be%85%e5%8a%a9%e7%bc%96%e8%be%91%e6%8a%80%e8%83%bd%e8%a1%a8%e7%8e%b0-%e5%b9%b6%e5%b0%86%e5%85%b6runtime%e6%b3%a8%e5%85%a5fsm/" rel="canonical"/>
+<link href="/?p=648" rel="shortlink"/>
+<style type="text/css">
+.site-top .lower nav {display: block !important;}
+.author-profile i , .post-like a , .post-share .show-share , .sub-text , .we-info a , span.sitename , .post-more i:hover , #pagination a:hover , .post-content a:hover , .float-content i:hover{ color: #FE9600 }
+.feature i , /*.feature-title span ,*/ .download , .navigator i:hover , .links ul li:before , .ar-time i , span.ar-circle , .object , .comment .comment-reply-link , .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #FE9600 }
+::-webkit-scrollbar-thumb { background: #FE9600 }
+.download , .navigator i:hover , .link-title , .links ul li:hover , #pagination a:hover , .comment-respond input[type='submit']:hover { border-color: #FE9600 }
+.entry-content a:hover , .site-info a:hover , .comment h4 a , #comments-navi a.prev , #comments-navi a.next , .comment h4 a:hover , .site-top ul li a:hover , .entry-title a:hover , #archives-temp h3 , span.page-numbers.current , .sorry li a:hover , .site-title a:hover , i.iconfont.js-toggle-search.iconsearch:hover , .comment-respond input[type='submit']:hover, blockquote:before, blockquote:after { color: #FE9600 }
+
+#aplayer-float .aplayer-lrc-current { color: #FE9600 !important}
+
+.is-active-link::before, .commentbody:not(:placeholder-shown)~.input-label, .commentbody:focus~.input-label {
+    background-color: #FE9600 !important
+}
+
+.commentbody:focus {
+    border-color: #FE9600 !important
+}
+
+.insert-image-tips:hover, .insert-image-tips-hover{ 
+    color: #FE9600;
+    border: 1px solid #FE9600}
+
+.site-top ul li a:after {
+    background-color: #FE9600}
+
+.scrollbar,.butterBar-message {
+    background: #FE9600 !important
+}
+
+#nprogress .spinner-icon{ 
+    border-top-color: #FE9600; 
+    border-left-color: #FE9600}
+
+#nprogress .bar {
+    background: #FE9600}
+
+.changeSkin-gear,.toc{
+    background:rgba(255,255,255,0.3);
+}
+
+.entry-content th {
+    background-color: #FE9600}
+
+.post-list-thumb:nth-child(2n) .post-content-wrap {
+    float: left;
+    padding-left: 30px;
+    padding-right: 0;
+    text-align: right;
+    margin: 20px 10px 10px 0
+}
+.post-list-thumb:nth-child(2n) .post-thumb {
+    float: left
+}
+
+.post-list-thumb:nth-child(2n) .post-thumb a {
+    border-radius: 10px 0 0 10px
+}
+
+
+.post-list-thumb{opacity: 0}
+.post-list-show {opacity: 1}
+
+.centerbg{background-image: url("/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg");background-position: center center;background-attachment: inherit;}
+.rotating {
+    -webkit-animation: rotating 6s linear infinite;
+    -moz-animation: rotating 6s linear infinite;
+    -ms-animation: rotating 6s linear infinite;
+    -o-animation: rotating 6s linear infinite;
+    animation: rotating 6s linear infinite;
+}
+body.dark #main-container,body.dark .pattern-center:after,body.dark #mo-nav,body.dark .headertop-bar::after,body.dark .site-content,body.dark .comments,body.dark .site-footer{background:#31363b !important;}body.dark .pattern-center-blank,body.dark .yya,body.dark .blank,body.dark .changeSkin-gear,body.dark .toc,body.dark .search-form input{background:rgba(49,54,59,0.85);}body.dark .single-reward .reward-row{background:#bebebe;}body.dark .font-family-controls button{background-color:#828080;}body.dark .single-reward .reward-row:before{border-bottom:13px solid #bebebe;}body.dark .search-form--modal,body.dark .ins-section .ins-section-header{border-bottom:none;background:rgba(49,54,59,0.95);}body.dark .ins-section .ins-search-item:hover,body.dark .ins-section .ins-search-item.active,body.dark .ins-section .ins-search-item:hover .ins-slug,body.dark .ins-section .ins-search-item.active .ins-slug,body.dark .ins-section .ins-search-item:hover .ins-search-preview,body.dark .ins-section .ins-search-item.active .ins-search-preview,body.dark .ins-section .ins-search-item:hover header,body.dark .ins-section .ins-search-item:hover .iconfont{color:#fff;background:#31363b;}body.dark .search_close:after,body.dark .search_close:before{background-color:#eee;}body.dark .search_close:hover:after,body.dark .search_close:hover:before{background-color:#3daee9;}body.dark input.m-search-input{background:#bebebe;}body.dark .openNav .icon,body.dark .openNav .icon:after,body.dark .openNav .icon:before{background-color:#eee;}body.dark .site-header:hover{background:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .menhera-container .emoji-item:hover{color:#424952;}body.dark .entry-content p,body.dark .entry-content ul,body.dark .entry-content ol,body.dark .comments .body p,body.dark .float-content,body.dark .post-list p,body.dark .link-title{color:#bebebe !important;}body.dark .entry-title a,body.dark .post-list-thumb .post-title,body.dark .post-list-thumb,body.dark .art-content #archives .al_mon_list .al_mon,body.dark .art-content #archives .al_mon_list span,body.dark .art .art-content #archives a,body.dark .menhera-container .emoji-item{color:#bebebe;}body.dark .logolink a,body.dark .post-content a:hover,body.dark .comment .body p a{color:rgba(61,174,233,0.8) !important;}body.dark .lower li ul,body.dark .header-user-avatar:hover .header-user-menu{background:#31363b;}body.dark .header-user-menu::before,body.dark .lower li ul::before{border-color:transparent transparent #31363b transparent;}body.dark .site-top ul li a,body.dark .header-user-menu a,body.dark #mo-nav ul li a,body.dark .site-title a,body.dark header.page-header,body.dark h1.cat-title{color:#eee;}body.dark .art .art-content #archives .al_year,body.dark .comment-respond input,body.dark .comment-respond textarea,body.dark .siren-checkbox-label{color:#eee;}body.dark input[type=color]:focus,body.dark input[type=date]:focus,body.dark input[type=datetime-local]:focus,body.dark input[type=datetime]:focus,body.dark input[type=email]:focus,body.dark input[type=month]:focus,body.dark input[type=number]:focus,body.dark input[type=password]:focus,body.dark input[type=range]:focus,body.dark input[type=search]:focus,body.dark input[type=tel]:focus,body.dark input[type=text]:focus,body.dark input[type=time]:focus,body.dark input[type=url]:focus,body.dark input[type=week]:focus,body.dark textarea:focus,body.dark #mo-nav .m-search form{color:#eee;background-color:#31363b;}body.dark .post-date,body.dark .post-list-thumb a,body.dark .post-meta{color:#888;}body.dark img,body.dark .cd-top,body.dark .highlight-wrap,body.dark iframe,body.dark .entry-content .aplayer{filter:brightness(0.8);}body.dark .post-list-thumb{box-shadow:0 1px 35px -8px rgba(0,0,0,0.8);}body.dark .centerbg{background-blend-mode:hard-light;background-color:#31363b;}body.dark .notice{color:#EFF0F1;background:#232629;border:none;}body.dark h1.fes-title,body.dark h1.main-title{border-bottom:1px dashed #ababab;}body.dark .scrollbar,body.dark .butterBar p.butterBar-message{background:#3daee9 !important;}body.dark .entry-content p code{color:#eee !important;background:rgba(61,174,233,0.5) !important;}body.dark .notification,body.dark #moblieGoTop,body.dark #moblieDarkLight{color:#eee;background-color:#232629;}body.dark #moblieGoTop:hover,body.dark #moblieDarkLight:hover{background-color:#232629;opacity:.8;}body.dark .widget-area{background-color:rgba(35,38,41,0.8);}body.dark .skin-menu,body.dark .menu-list li,body.dark .widget-area .heading,body.dark .widget-area .show-hide svg,body.dark #aplayer-float,body.dark .aplayer.aplayer-fixed .aplayer-body,body.dark .aplayer .aplayer-miniswitcher,body.dark .aplayer .aplayer-pic{color:#eee;background-color:#232629 !important;}body.dark .skin-menu::after{border-color:#232629 transparent transparent transparent;}body.dark .aplayer .aplayer-list ol li .aplayer-list-author{color:#eee;}body.dark #aplayer-float .aplayer-lrc-current{color:transparent !important;}body.dark .aplayer.aplayer-fixed .aplayer-lrc{text-shadow:-1px -1px 0 #989898;}body.dark .aplayer .aplayer-list ol li.aplayer-list-light{background:rgba(61,174,233,0.5) !important;}body.dark .aplayer .aplayer-list ol li:hover{background:rgba(61,174,233,0.8) !important;}body.dark .aplayer.aplayer-fixed .aplayer-list{border:none !important;}body.dark .aplayer.aplayer-fixed .aplayer-info,body.dark .aplayer .aplayer-list ol li{border-top:none !important;}body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path,body.dark .widget-area .show-hide svg path{fill:#fafafa;}body.dark,body.dark button,body.dark input,body.dark select,body.dark textarea{color:#eee;}body.dark button,body.dark input[type=button],body.dark input[type=reset],body.dark input[type=submit]{box-shadow:none;}body.dark .entry-content th{background-color:#3daee9;}body.dark .author-profile i,body.dark .post-like a,body.dark .post-share .show-share,body.dark .sub-text,body.dark .we-info a,body.dark span.sitename,body.dark .post-more i:hover,body.dark #pagination a:hover,body.dark .post-content a:hover,body.dark .float-content i:hover{color:#3daee9;}body.dark .feature i,body.dark .feature-title span,body.dark .download,body.dark .navigator i:hover,body.dark .links ul li:before,body.dark .ar-time i,body.dark span.ar-circle,body.dark .object,body.dark .comment .comment-reply-link,body.dark .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#3daee9;}body.dark .download,body.dark .navigator i:hover,body.dark .link-title,body.dark .links ul li:hover,body.dark #pagination a:hover,body.dark .comment-respond input[type='submit']:hover{border-color:#3daee9;}body.dark .site-info a:hover,body.dark .comment h4 a,body.dark #comments-navi a.prev,body.dark #comments-navi a.next,body.dark .comment h4 a:hover,body.dark .site-top ul li a:hover,body.dark .entry-title a:hover,body.dark #archives-temp h3,body.dark span.page-numbers.current,body.dark .sorry li a:hover,body.dark .site-title a:hover,body.dark .js-toggle-search.iconsearch:hover,body.dark .comment-respond input[type='submit']:hover,body.dark blockquote:before,body.dark blockquote:after,body.dark .entry-content a{color:#3daee9 !important;}body.dark .entry-content a:hover{color:#3daee9;text-decoration:underline !important;}body.dark .is-active-link::before,body.dark .commentbody:not(:placeholder-shown) ~ .input-label,body.dark .commentbody:focus ~ .input-label{background-color:#3daee9 !important;}body.dark .commentbody:focus{border-color:#3daee9 !important;}body.dark .insert-image-tips:hover,body.dark .insert-image-tips-hover{color:#3daee9;border:1px solid #3daee9;}body.dark .site-top ul li a:after,body.dark .menu-list li:hover,body.dark .font-family-controls button.selected{background-color:#3daee9 !important;}body.dark #nprogress .spinner-icon{border-top-color:#3daee9;border-left-color:#3daee9;}body.dark #nprogress .bar{background:#3daee9;}body.dark .comment .info,body.dark .comment-respond .logged-in-as,body.dark .notification,body.dark .comment-respond .logged-in-as a,body.dark .comment-respond .logged-in-as a:hover{color:#9499a8;}body.dark .sm{color:#377292 !important;}html,#main-container,.pattern-center:after,#mo-nav,.headertop-bar::after,.site-content,.comments,.site-footer,.pattern-center-blank,.yya,.blank,.changeSkin-gear,.toc,.search-form input{transition:background 1s;}.entry-content p,.entry-content ul,.entry-content ol,.comments .body p,.float-content,.post-list p,.link-title{transition:color 1s;}body.dark::-webkit-scrollbar-thumb,body.dark::selection{background:#377292;color:#ccc;}
+</style>
+<script>
+/*Initial Variables*/
+var mashiro_option = new Object();
+var mashiro_global = new Object();
+mashiro_option.NProgressON = false;
+mashiro_option.email_domain = "";
+mashiro_option.email_name = "";
+mashiro_option.cookie_version_control = "";
+mashiro_option.qzone_autocomplete = false;
+mashiro_option.site_name = "猫刀刀个人站";
+mashiro_option.author_name = "猫刀刀";
+mashiro_option.template_url = "/wordpress/wp-content/themes/Sakura-master";
+mashiro_option.site_url = "/wordpress";
+mashiro_option.qq_api_url = "/wp-json/sakura/v1/qqinfo/json"; 
+// mashiro_option.qq_avatar_api_url = "https://api.2heng.xin/qqinfo/";
+mashiro_option.live_search = false;
+
+mashiro_option.skin_bg0 = "none";
+mashiro_option.skin_bg1 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png";
+mashiro_option.skin_bg2 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/plaid2dbf8.jpg";
+mashiro_option.skin_bg3 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/star02.png";
+mashiro_option.skin_bg4 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/kyotoanimation.png";
+mashiro_option.skin_bg5 = "https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/dot_orange.gif";
+mashiro_option.skin_bg6 = "https://api.mashiro.top/bing/";
+mashiro_option.skin_bg7 = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png";
+
+mashiro_option.darkmode = true;
+
+mashiro_option.land_at_home = false;
+
+mashiro_option.baguetteBoxON = false;
+
+mashiro_option.clipboardCopyright = true;
+
+mashiro_option.entry_content_theme_src = "/wordpress/wp-content/themes/Sakura-master/cdn/theme/sakura.css?3.3.9";
+mashiro_option.entry_content_theme = "sakura";
+
+mashiro_option.jsdelivr_css_src = "/wordpress/wp-content/themes/Sakura-master/cdn/css/lib.css";
+mashiro_option.float_player_on = false;
+mashiro_option.meting_api_url = "/wp-json/sakura/v1/meting/aplayer";
+
+mashiro_option.cover_api = "/wordpress/wp-content/themes/Sakura-master/manifest/jpeg/19313b0d62b27c8ba022f60fbfedd5ee.jpeg";
+
+mashiro_option.windowheight = /Mobile|Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 'fixed' : 'auto';
+/*End of Initial Variables*/
+</script>
+<style id="custom-background-css" type="text/css">
+body.custom-background { background-image: url("/wordpress/wp-content/uploads/2021/06/bg1.jpg"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+</style>
+<script type="text/javascript">
+if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+  alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+}
+</script>
+<link href="/assets/static-restore.css" rel="stylesheet"/></head>
+<body class="post-template-default single single-post postid-648 single-format-standard custom-background chinese-font">
+<div class="scrollbar" id="bar"></div>
+<section id="main-container">
+<div class="site wrapper" id="page">
+<header class="site-header no-select" role="banner">
+<div class="site-top">
+<div class="site-branding">
+<span class="site-title">
+<span class="logolink serif">
+<a href="/">
+<span class="site-name">猫刀刀个人站</span>
+</a>
+</span>
+</span>
+<!-- logo end -->
+</div><!-- .site-branding -->
+
+<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+<div class="lower"> <nav><ul class="menu" id="menu-menu-1"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul></nav><!-- #site-navigation -->
+</div>
+</div>
+</header><!-- #masthead -->
+<div class="pattern-center-blank"></div>
+<div class="pattern-center single-center">
+<div class="pattern-attachment-img lazyload" data-src="/wordpress/wp-content/uploads/2022/07/魔女.jpg" style="background-image: url(/assets/vendor/8c901598231a1937f3.svg)"> </div>
+<header class="pattern-header single-header"><h1 class="entry-title">使用Timeline辅助编辑技能表现-并将其runtime注入FSM</h1><p class="entry-census"><span><a href="/author/maodaodao/"><img src="/assets/avatar.svg"/></a></span><span><a href="/author/maodaodao/">maodaodao</a></span><span class="bull">·</span>2022-07-08<span class="bull">·</span>979 次阅读</p></header>
+</div>
+<div class="site-content" id="content">
+<div class="content-area" id="primary">
+<main class="site-main" id="main" role="main">
+<article class="post-648 post type-post status-publish format-standard has-post-thumbnail hentry category-23 category-12" id="post-648">
+<!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+<div class="entry-content">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><p>MDD</p><cite>将timeline引入技能系统的意义就是为了更好的技能表现。</cite></blockquote>
+<h2 class="wp-block-heading"><div class="has-toc have-toc"></div>技术选型以及概念</h2>
+<h3 class="wp-block-heading">技术选型</h3>
+<p>timeline插件我决定选用Slate，是一个开源的timeline插件</p>
+<p>其比unity自带的timeline更轻量更易于改造和扩展</p>
+<p>具体详情，<a href="/unity-timeline%e6%8f%92%e4%bb%b6-slate-%e8%a7%a3%e8%af%bb/" rel="nofollow" target="_blank">可以看Slate源码解读</a></p>
+<h3 class="wp-block-heading">概念</h3>
+<h4 class="wp-block-heading">在寻常情况下</h4>
+<p>当我们引入timeline时会发现timeline什么都能驱动</p>
+<p>所以很可能会出现这种形式，将状态也放进timeline驱动</p>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-649" data-src="/wordpress/wp-content/uploads/2022/06/image-6-1024x318.png" decoding="async" fetchpriority="high" height="318" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-6-1024x318.png" srcset="/wordpress/wp-content/uploads/2022/06/image-6-1024x318.png 1024w, /wordpress/wp-content/uploads/2022/06/image-6-300x93.png 300w, /wordpress/wp-content/uploads/2022/06/image-6-768x238.png 768w, /wordpress/wp-content/uploads/2022/06/image-6.png 1034w" width="1024"/><figcaption>在MDDSkillEngine中错误的示范</figcaption></figure>
+<noscript><img alt="" class="wp-image-649" decoding="async" height="318" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-6-1024x318.png" srcset="/wordpress/wp-content/uploads/2022/06/image-6-1024x318.png 1024w, /wordpress/wp-content/uploads/2022/06/image-6-300x93.png 300w, /wordpress/wp-content/uploads/2022/06/image-6-768x238.png 768w, /wordpress/wp-content/uploads/2022/06/image-6.png 1034w" width="1024"/><figcaption>在MDDSkillEngine中错误的示范</figcaption></noscript>
+<p>可以看到在示例图中timeline几乎驱动了一切，将状态也放进了轨道</p>
+<p>但是这对我来说有一个疑问</p>
+<p><strong>如果这样做，那状态本身驱动什么呢，仿佛状态就成了一个标记失去了存在的大部分意义</strong></p>
+<h4 class="wp-block-heading">MDDSkillEngine中的用法-timeline编辑的及角色状态本身</h4>
+<p>将状态轨道去掉</p>
+<p><strong>然后将一段timeline就当成一个角色状态来编辑处理</strong></p>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-651" data-src="/wordpress/wp-content/uploads/2022/06/image-8-1024x206.png" decoding="async" height="206" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-8-1024x206.png" srcset="/wordpress/wp-content/uploads/2022/06/image-8-1024x206.png 1024w, /wordpress/wp-content/uploads/2022/06/image-8-300x60.png 300w, /wordpress/wp-content/uploads/2022/06/image-8-768x154.png 768w, /wordpress/wp-content/uploads/2022/06/image-8.png 1404w" width="1024"/><figcaption>卡尔寒冰之墙SkillTimeline示意图</figcaption></figure>
+<noscript><img alt="" class="wp-image-651" decoding="async" height="206" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-8-1024x206.png" srcset="/wordpress/wp-content/uploads/2022/06/image-8-1024x206.png 1024w, /wordpress/wp-content/uploads/2022/06/image-8-300x60.png 300w, /wordpress/wp-content/uploads/2022/06/image-8-768x154.png 768w, /wordpress/wp-content/uploads/2022/06/image-8.png 1404w" width="1024"/><figcaption>卡尔寒冰之墙SkillTimeline示意图</figcaption></noscript>
+<p><strong>一段timeline就是一个状态！</strong></p>
+<p>这样我们就需要做一个适配工作</p>
+<p>即如何让timeline编辑好的逻辑跑在状态机中，细节将在稍后叙述</p>
+<p>接下来我们需要捋一下，适配技能我们需要哪些轨道功能</p>
+<h2 class="wp-block-heading">适配技能的轨道划分以及部分细节</h2>
+<h3 class="wp-block-heading">动画轨道</h3>
+<p>这是一个朴实的轨道，当时间轴走到相应的动画块进行播放即可</p>
+<p>其中淡入淡出交由动画模块处理</p>
+<p>注意：一般不让动画影响本身影响角色的位移和旋转</p>
+<h3 class="wp-block-heading">碰撞体轨道</h3>
+<p>碰撞体轨道的作用就是生成碰撞体</p>
+<p>其中轨道的上的每个clip都能生成一个碰撞体</p>
+<p>可以配置多个轨道</p>
+<p>通过编写轨道逻辑我们可以让碰撞体生成到理想的位置</p>
+<p>可以做到通过表现可视化非常精准的控制碰撞体生成的位置与大小</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-652" data-src="/wordpress/wp-content/uploads/2022/06/image-9.png" decoding="async" height="415" loading="lazy" sizes="(max-width: 495px) 100vw, 495px" src="/wordpress/wp-content/uploads/2022/06/image-9.png" srcset="/wordpress/wp-content/uploads/2022/06/image-9.png 495w, /wordpress/wp-content/uploads/2022/06/image-9-300x252.png 300w" width="495"/><figcaption>生成碰撞盒示意图</figcaption></figure>
+<noscript><img alt="" class="wp-image-652" decoding="async" height="415" loading="lazy" sizes="(max-width: 495px) 100vw, 495px" src="/wordpress/wp-content/uploads/2022/06/image-9.png" srcset="/wordpress/wp-content/uploads/2022/06/image-9.png 495w, /wordpress/wp-content/uploads/2022/06/image-9-300x252.png 300w" width="495"/><figcaption>生成碰撞盒示意图</figcaption></noscript>
+<h4 class="wp-block-heading">为碰撞体轨道引入贝塞尔曲线位移编辑</h4>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-655" data-src="/wordpress/wp-content/uploads/2022/06/image-12.png" decoding="async" height="548" loading="lazy" sizes="(max-width: 594px) 100vw, 594px" src="/wordpress/wp-content/uploads/2022/06/image-12.png" srcset="/wordpress/wp-content/uploads/2022/06/image-12.png 594w, /wordpress/wp-content/uploads/2022/06/image-12-300x277.png 300w" width="594"/><figcaption>碰撞体clip编辑界面</figcaption></figure>
+<noscript><img alt="" class="wp-image-655" decoding="async" height="548" loading="lazy" sizes="(max-width: 594px) 100vw, 594px" src="/wordpress/wp-content/uploads/2022/06/image-12.png" srcset="/wordpress/wp-content/uploads/2022/06/image-12.png 594w, /wordpress/wp-content/uploads/2022/06/image-12-300x277.png 300w" width="594"/><figcaption>碰撞体clip编辑界面</figcaption></noscript>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-656" data-src="/wordpress/wp-content/uploads/2022/06/贝塞尔曲线作用.gif" decoding="async" height="310" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/贝塞尔曲线作用.gif" width="469"/><figcaption>贝塞尔曲线作用</figcaption></figure>
+<noscript><img alt="" class="wp-image-656" decoding="async" height="310" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/贝塞尔曲线作用.gif" width="469"/><figcaption>贝塞尔曲线作用</figcaption></noscript>
+<p><strong>勾选了速度选项会将贝塞尔曲线位移逻辑下放到碰撞体脚本上</strong></p>
+<p><strong>如果不勾选则由timeline驱动</strong></p>
+<h4 class="wp-block-heading">适配碰撞体基本参数</h4>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-657" data-src="/wordpress/wp-content/uploads/2022/06/image-13.png" decoding="async" height="146" loading="lazy" sizes="(max-width: 598px) 100vw, 598px" src="/wordpress/wp-content/uploads/2022/06/image-13.png" srcset="/wordpress/wp-content/uploads/2022/06/image-13.png 598w, /wordpress/wp-content/uploads/2022/06/image-13-300x73.png 300w" width="598"/><figcaption>预制名</figcaption></figure>
+<noscript><img alt="" class="wp-image-657" decoding="async" height="146" loading="lazy" sizes="(max-width: 598px) 100vw, 598px" src="/wordpress/wp-content/uploads/2022/06/image-13.png" srcset="/wordpress/wp-content/uploads/2022/06/image-13.png 598w, /wordpress/wp-content/uploads/2022/06/image-13-300x73.png 300w" width="598"/><figcaption>预制名</figcaption></noscript>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-658" data-src="/wordpress/wp-content/uploads/2022/06/image-14.png" decoding="async" height="213" loading="lazy" sizes="(max-width: 576px) 100vw, 576px" src="/wordpress/wp-content/uploads/2022/06/image-14.png" srcset="/wordpress/wp-content/uploads/2022/06/image-14.png 576w, /wordpress/wp-content/uploads/2022/06/image-14-300x111.png 300w" width="576"/><figcaption>逻辑脚本</figcaption></figure>
+<noscript><img alt="" class="wp-image-658" decoding="async" height="213" loading="lazy" sizes="(max-width: 576px) 100vw, 576px" src="/wordpress/wp-content/uploads/2022/06/image-14.png" srcset="/wordpress/wp-content/uploads/2022/06/image-14.png 576w, /wordpress/wp-content/uploads/2022/06/image-14-300x111.png 300w" width="576"/><figcaption>逻辑脚本</figcaption></noscript>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-659" data-src="/wordpress/wp-content/uploads/2022/06/image-15.png" decoding="async" height="183" loading="lazy" sizes="(max-width: 569px) 100vw, 569px" src="/wordpress/wp-content/uploads/2022/06/image-15.png" srcset="/wordpress/wp-content/uploads/2022/06/image-15.png 569w, /wordpress/wp-content/uploads/2022/06/image-15-300x96.png 300w" width="569"/><figcaption>触发碰撞后逻辑</figcaption></figure>
+<noscript><img alt="" class="wp-image-659" decoding="async" height="183" loading="lazy" sizes="(max-width: 569px) 100vw, 569px" src="/wordpress/wp-content/uploads/2022/06/image-15.png" srcset="/wordpress/wp-content/uploads/2022/06/image-15.png 569w, /wordpress/wp-content/uploads/2022/06/image-15-300x96.png 300w" width="569"/><figcaption>触发碰撞后逻辑</figcaption></noscript>
+<p>直接通过对Clip的编辑以下配置：</p>
+<p>碰撞体<strong>预制</strong></p>
+<p>碰撞体<strong>挂载逻辑</strong></p>
+<p><strong>碰撞后逻辑</strong></p>
+<p>这样我们就获得了一个灵活的配置方式</p>
+<p><strong>把碰撞体预制的制作</strong>---单纯的模型属性，例如形状材质</p>
+<p><strong>碰撞体逻辑的编写</strong>---一般指碰撞体自身的行为，例如碰撞体上存在一个ai效果</p>
+<p><strong>碰撞后的逻辑</strong></p>
+<p>拆开<strong>解耦</strong>，分别制作</p>
+<h3 class="wp-block-heading">特效轨道</h3>
+<p>特效轨道的功能是碰撞体轨道的子集</p>
+<p>就不详细说明了</p>
+<h3 class="wp-block-heading">CD轨道</h3>
+<p>这个是为了适配某些游戏的特殊需求而制作的轨道</p>
+<p>比如dota2中抬手但是没有释放技能时</p>
+<p>技能是没有进入cd的</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-660" data-src="/wordpress/wp-content/uploads/2022/06/image-16.png" decoding="async" height="43" loading="lazy" sizes="(max-width: 939px) 100vw, 939px" src="/wordpress/wp-content/uploads/2022/06/image-16.png" srcset="/wordpress/wp-content/uploads/2022/06/image-16.png 939w, /wordpress/wp-content/uploads/2022/06/image-16-300x14.png 300w, /wordpress/wp-content/uploads/2022/06/image-16-768x35.png 768w" width="939"/><figcaption>cd轨道</figcaption></figure>
+<noscript><img alt="" class="wp-image-660" decoding="async" height="43" loading="lazy" sizes="(max-width: 939px) 100vw, 939px" src="/wordpress/wp-content/uploads/2022/06/image-16.png" srcset="/wordpress/wp-content/uploads/2022/06/image-16.png 939w, /wordpress/wp-content/uploads/2022/06/image-16-300x14.png 300w, /wordpress/wp-content/uploads/2022/06/image-16-768x35.png 768w" width="939"/><figcaption>cd轨道</figcaption></noscript>
+<p>如果我们在进入cd clip技能之前中止技能（也就是切换状态） 则技能不会进入cd</p>
+<p>这里又衍生出了另一个问题</p>
+<p>就是在之前提到的 技能的释放前逻辑是由行为树管理的</p>
+<p><strong>那么技能行为树就需要接收到技能是否释放成功的信号</strong>来决定技能是否进入cd</p>
+<p>这就需要解决一下状态机与行为树的通话问题</p>
+<p>具体解决方案会在后续文章中写出</p>
+<h3 class="wp-block-heading">FadeInOut轨道</h3>
+<p>主要用来控制技能在何时是不会被打断的</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-661" data-src="/wordpress/wp-content/uploads/2022/06/image-17.png" decoding="async" height="39" loading="lazy" sizes="(max-width: 951px) 100vw, 951px" src="/wordpress/wp-content/uploads/2022/06/image-17.png" srcset="/wordpress/wp-content/uploads/2022/06/image-17.png 951w, /wordpress/wp-content/uploads/2022/06/image-17-300x12.png 300w, /wordpress/wp-content/uploads/2022/06/image-17-768x31.png 768w" width="951"/><figcaption>fadeinout轨道</figcaption></figure>
+<noscript><img alt="" class="wp-image-661" decoding="async" height="39" loading="lazy" sizes="(max-width: 951px) 100vw, 951px" src="/wordpress/wp-content/uploads/2022/06/image-17.png" srcset="/wordpress/wp-content/uploads/2022/06/image-17.png 951w, /wordpress/wp-content/uploads/2022/06/image-17-300x12.png 300w, /wordpress/wp-content/uploads/2022/06/image-17-768x31.png 768w" width="951"/><figcaption>fadeinout轨道</figcaption></noscript>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-662" data-src="/wordpress/wp-content/uploads/2022/06/image-18.png" decoding="async" height="107" loading="lazy" sizes="(max-width: 606px) 100vw, 606px" src="/wordpress/wp-content/uploads/2022/06/image-18.png" srcset="/wordpress/wp-content/uploads/2022/06/image-18.png 606w, /wordpress/wp-content/uploads/2022/06/image-18-300x53.png 300w" width="606"/><figcaption>type选择</figcaption></figure>
+<noscript><img alt="" class="wp-image-662" decoding="async" height="107" loading="lazy" sizes="(max-width: 606px) 100vw, 606px" src="/wordpress/wp-content/uploads/2022/06/image-18.png" srcset="/wordpress/wp-content/uploads/2022/06/image-18.png 606w, /wordpress/wp-content/uploads/2022/06/image-18-300x53.png 300w" width="606"/><figcaption>type选择</figcaption></noscript>
+<h3 class="wp-block-heading">结束当前状态轨道</h3>
+<p>让我们看一个非常常见的案例技能</p>
+<p>卡尔的电磁脉冲 www</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-664" data-src="/wordpress/wp-content/uploads/2022/06/image-19.png" decoding="async" height="277" loading="lazy" sizes="(max-width: 798px) 100vw, 798px" src="/wordpress/wp-content/uploads/2022/06/image-19.png" srcset="/wordpress/wp-content/uploads/2022/06/image-19.png 798w, /wordpress/wp-content/uploads/2022/06/image-19-300x104.png 300w, /wordpress/wp-content/uploads/2022/06/image-19-768x267.png 768w" width="798"/><figcaption>电磁脉冲timeline示例图</figcaption></figure>
+<noscript><img alt="" class="wp-image-664" decoding="async" height="277" loading="lazy" sizes="(max-width: 798px) 100vw, 798px" src="/wordpress/wp-content/uploads/2022/06/image-19.png" srcset="/wordpress/wp-content/uploads/2022/06/image-19.png 798w, /wordpress/wp-content/uploads/2022/06/image-19-300x104.png 300w, /wordpress/wp-content/uploads/2022/06/image-19-768x267.png 768w" width="798"/><figcaption>电磁脉冲timeline示例图</figcaption></noscript>
+<p>kaer的电磁脉冲会在施法动作完成以后差不多2秒才产生实际技能效果 生成造成伤害并且削蓝的检测体</p>
+<p>但是这一非常常见的技能中的<strong>人物状态切换效果会在检测体生成之前早早完成</strong></p>
+<p>施法状态可能就持续半秒，效果产生却在两秒以后</p>
+<p>所以我们需要为timeline指定一个状态结束的时间点功能，<strong>并且需要保留timeline后续逻辑的驱动</strong></p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-665" data-src="/wordpress/wp-content/uploads/2022/06/image-20.png" decoding="async" height="38" loading="lazy" sizes="(max-width: 821px) 100vw, 821px" src="/wordpress/wp-content/uploads/2022/06/image-20.png" srcset="/wordpress/wp-content/uploads/2022/06/image-20.png 821w, /wordpress/wp-content/uploads/2022/06/image-20-300x14.png 300w, /wordpress/wp-content/uploads/2022/06/image-20-768x36.png 768w" width="821"/><figcaption>状态结束轨道</figcaption></figure>
+<noscript><img alt="" class="wp-image-665" decoding="async" height="38" loading="lazy" sizes="(max-width: 821px) 100vw, 821px" src="/wordpress/wp-content/uploads/2022/06/image-20.png" srcset="/wordpress/wp-content/uploads/2022/06/image-20.png 821w, /wordpress/wp-content/uploads/2022/06/image-20-300x14.png 300w, /wordpress/wp-content/uploads/2022/06/image-20-768x36.png 768w" width="821"/><figcaption>状态结束轨道</figcaption></noscript>
+<p><strong>为了做到能够在状态切换完成后保留之后的timeline逻辑，我选择在FSM中开启一个协程去跑timeline逻辑</strong></p>
+<p>具体实现会在后面代码解析中给出</p>
+<p><strong>这个实现其实可以通过魔法弹避免，比如在技能状态时间内就生成一个延迟触发的碰撞体，但是我为了自己舒服还是这么写了，因为这样可以快速做到所见即所得，往后MDDSkillEngine被更多的业务驱动更改以后，这个设计可能会改变，所以希望读者多多思考得失，我也希望能够抛砖引玉</strong>。</p>
+<h3 class="wp-block-heading">实体生成轨道</h3>
+<p>实体轨道主要用来生成召唤物类的物体</p>
+<h3 class="wp-block-heading">人物贝塞尔曲线位移轨道-暂时未作</h3>
+<h3 class="wp-block-heading">镜头轨道-暂时未做</h3>
+<h3 class="wp-block-heading">蓄力轨道-暂时未做</h3>
+<h3 class="wp-block-heading">声音轨道-暂时未作</h3>
+<h3 class="wp-block-heading">旋转轨道-暂时未作</h3>
+<p></p>
+<h2 class="wp-block-heading">代码实现思路</h2>
+<p>大家在博客里看个思路即可</p>
+<p>阅读代码可以直接下载源码进工程看</p>
+<p>在博客中展示的代码只是为了展现一个关键步骤，打字表达太累了&gt;&lt;</p>
+<h3 class="wp-block-heading">1.Editor模式下的表现完全由Slate托管</h3>
+<p>slate自带runtime和editor支持</p>
+<p>这边我只取用slate的editor支持</p>
+<p>如果需要新的轨道支持也就是和扩展普通slate轨道一般无二，只是我们无需考虑表现轨道对runtime的适配。</p>
+<h3 class="wp-block-heading">2.将Slate的数据导出</h3>
+<p>Editor数据导出没什么好说的</p>
+<p>是一个老牛搬砖的活老老实实一个个导出即可</p>
+<p>代码如下：</p>
+<p>其中序列化工具为OdinSerializer，其功能强大在纯客户端的情况下谁用谁知道</p>
+<pre class="wp-block-code"><code>using OdinSerializer;
+using Slate;
+using Slate.ActionClips;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+
+namespace MDDSkillEngine
+{
+    public class MDDSkillDataGenerator : EditorWindow
+    {      
+        /// <summary>
+        /// 处理技能数据
+        /// 导出slate中的timeline数据到 skilldata中
+        /// </summary>
+        [MenuItem("MDDSkillEngine/GeneratorSkillData")]
+        public static void GeneratorSkillData()
+        {
+            //路径
+            string fullPath = Application.dataPath + "/MDDSkillEngine/SkillRes/";
+            string savePath = Application.dataPath + "/MDDSkillEngine/SkillRes/SkillTimelineRuntime/";
+            Debug.Log(fullPath);
+            //获得指定路径下面的所有资源文件
+            if (Directory.Exists(fullPath))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(fullPath);
+                FileInfo[] files = dirInfo.GetFiles("*", SearchOption.AllDirectories); //包括子目录
+                Debug.Log(files.Length);
+
+                for (int i = 0; i &lt; files.Length; i++)
+                {
+                    if (files[i].Name.EndsWith(".prefab"))
+                    {
+                        Debug.Log("预制体名字" + files[i].Name);
+                        string path = "Assets/MDDSkillEngine/SkillRes/SkillTimeline/" + files[i].Name;
+                        Debug.Log("预制体路径" + path);
+                        GameObject obj = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject;
+                        Debug.Log("obj的名字" + obj.name);
+
+                        Cutscene Data = obj.GetComponent<cutscene>();
+
+                        byte[] bytes = SerializationUtility.SerializeValue(HandleSkillData(Data), DataFormat.Binary);
+
+                        File.WriteAllBytes(savePath + Data.gameObject.name+ ".bytes", bytes);
+
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("资源路径不存在");
+            }
+
+            Debug.Log("数据导出完成");
+        }
+
+
+        /// <summary>
+        /// 返回一份slate数据中的技能导出数据
+        /// </summary>
+        /// <param name="Data"/>
+        /// <returns></returns>
+        public static SkillData HandleSkillData(Cutscene Data)
+        {
+            List<skilldatabase> dataList = new List<skilldatabase>();
+
+            float FinishTime = 0f;
+            float CDTime = 0f;
+
+            foreach (var group in Data.groups)
+            {
+                foreach (var track in group.tracks)
+                {
+                    switch (track.SkillDataType)
+                    {
+                        case SkillDataType.None:
+                            Debug.LogError($"检测到未指定类型的技能数据{track.name}");
+                            continue;
+                        case SkillDataType.Effect:
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is EffectInstance)
+                                    {
+                                        EffectInstance effectInstance = (EffectInstance)clip;
+                                        EffectSkillData data = new EffectSkillData();
+                                        data.OnInit(effectInstance);
+                                        dataList.Add(data);
+                                    }
+                                }
+                                break;
+                            }
+                        case SkillDataType.Animation:
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is PlayAnimatorClip)
+                                    {
+                                        PlayAnimatorClip playAnimatorClip = (PlayAnimatorClip)clip;
+                                        AnimationSkillData data = new AnimationSkillData();
+                                        data.OnInit(playAnimatorClip);
+                                        dataList.Add(data);
+                                    }
+                                }
+                                break;
+                            }
+                        case (SkillDataType.Collider):
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is InstanceCollider)
+                                    {
+                                        InstanceCollider instanceCollider = (InstanceCollider)clip;
+                                        ColliderSkillData data = new ColliderSkillData();
+                                        data.OnInit(instanceCollider);
+                                        dataList.Add(data);
+                                    }
+                                }
+                                break;
+                            }
+                        case (SkillDataType.CD):
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is CD)
+                                    {
+                                        CD cd = (CD)clip;
+                                        CDSkillData data = new CDSkillData();
+                                        data.OnInit(cd);
+                                        dataList.Add(data);
+                                        CDTime = clip.startTime;
+                                    }
+                                }
+                                break;
+                            }
+                        case (SkillDataType.InOut):
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is SkillFadeInOut)
+                                    {
+                                        SkillFadeInOut skillFadeInOut = (SkillFadeInOut)clip;
+                                        FadeInOutSkillData data = new FadeInOutSkillData();
+                                        data.OnInit(skillFadeInOut);
+                                        dataList.Add(data);
+                                    }
+                                }
+                                break;
+                            }
+                        case (SkillDataType.FinishState):
+                            {
+                                foreach (var clip in track.clips)
+                                {
+                                    if (clip is FinishStateTime)
+                                    {
+                                        FinishTime = clip.startTime;
+                                    }
+                                }
+                                break;
+                            }
+
+                    }
+                }
+            }
+
+            SkillData resultData = new SkillData(dataList);
+
+            resultData.FinishStateTime = FinishTime;
+            resultData.Length = Data.length;
+            resultData.targetType = Data._targetType;
+            resultData.CDTime = CDTime;
+
+            Debug.LogError(resultData.Length);
+
+            return resultData;
+        }
+
+    }
+
+}
+
+</skilldatabase></skilldatabase></cutscene></code></pre>
+<h3 class="wp-block-heading">3.构建FSM中的TimelineRuntime</h3>
+<p>直接将slate运行逻辑搬运过来即可</p>
+<p>同时因为驱动改为了FSM，所以更加轻量无需生成大量gameobject辅助运行</p>
+<p>我偷了个懒直接取消了group和track的概念</p>
+<p>只保留了clip</p>
+<p>同时暂时没有将回放功能搬入，因为涉及到和命令模式的适配</p>
+<p>所以timeline驱动就是驱动所有的clip</p>
+<p>TimelineRuntime代码如下：</p>
+<pre class="wp-block-code"><code>using MDDGameFramework.Runtime;
+using MDDGameFramework;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace MDDSkillEngine
+{
+    public abstract class SkillTimeline
+    {
+        /// <summary>
+        /// 技能目标类型
+        /// </summary>
+        public TargetType TargetType;
+
+        /// <summary>
+        /// 技能进入cd的时间
+        /// </summary>
+        public float CDTime = 0f;
+        /// <summary>
+        /// 用于控制状态是否可以强制切换
+        /// </summary>
+        /// <param name="b"/>
+        public abstract void SetStateCantStop(bool b);
+    }
+
+    /// <summary>
+    /// 技能运行时辅助类
+    /// 主要用于将slate逻辑复制过来
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class SkillTimeline<t> : SkillTimeline where T : Entity
+    {
+        public enum PlayingDirection
+        {
+            Forwards,
+            Backwards
+        }
+
+        public T owner;
+
+        public IFsm<t> fsm;
+
+        public List<skillclip> skillClips = new List<skillclip>();
+
+        public float currentTime;
+
+        public float lastTime;
+
+        public float length;
+
+        public float previousTime;
+
+        public PlayingDirection playingDirection = PlayingDirection.Forwards;
+
+        public float playbackSpeed = 1f;
+
+        private bool isActive = true;
+
+        private List<idirectabletimepointer> timePointers = new List<idirectabletimepointer>();
+        private List<idirectabletimepointer> unsortedStartTimePointers = new List<idirectabletimepointer>();
+
+        public void Init(IFsm<t> fsm, SkillData skillData)
+        {         
+            this.fsm = fsm;
+            owner = fsm.Owner;
+
+            length = skillData.Length;
+            TargetType = skillData.targetType;
+            CDTime = skillData.CDTime;
+
+            InitSkillClip(skillData);
+        }
+
+
+        public void Updata(float delta)
+        {
+            delta *= playbackSpeed;
+            currentTime += playingDirection == PlayingDirection.Forwards ? delta : -delta;
+
+            if (currentTime &gt;= length &amp;&amp; playingDirection == PlayingDirection.Forwards)
+            {
+                Sample(currentTime ,false);
+                return;
+            }
+
+            Sample(currentTime ,true);
+        }
+
+        public void Exit()
+        {
+            currentTime = 0f;
+            lastTime = 0f;
+            previousTime = 0f;
+            isActive = true;
+
+            foreach (var v in timePointers)
+            {
+                v.isTrigger = false;
+            }
+
+            foreach (var v in unsortedStartTimePointers)
+            {
+                v.isTrigger = false;
+            }
+
+            foreach (var v in skillClips)
+            {
+                v.Close();
+            }
+        }
+      
+        /// <summary>
+        /// 初始化技能clip
+        /// </summary>
+        /// <param name="skillData"/>
+        public void InitSkillClip(SkillData skillData)
+        {
+            foreach (var data in skillData.skillData)
+            {
+                switch (data.DataType)
+                {
+                    case SkillDataType.Effect:
+                        {
+                            EffectClip effectClip = new EffectClip();
+                            effectClip.Init(data, owner,this);
+                            skillClips.Add(effectClip);
+                        }
+                        break;
+                    case SkillDataType.Animation:
+                        {
+                            AnimationClip animationClip = new AnimationClip();
+                            animationClip.Init(data, owner, this);
+                            skillClips.Add(animationClip);
+                        }
+                        break;
+                    case SkillDataType.Collider:
+                        {
+                            ColliderClip colliderClip = new ColliderClip();
+                            colliderClip.Init(data, owner, this);
+                            skillClips.Add(colliderClip);
+                        }
+                        break;
+                    case SkillDataType.CD:
+                        {
+                            CDClip cdClip = new CDClip();
+                            cdClip.Init(data, owner, this);
+                            skillClips.Add(cdClip);
+                        }
+                        break;
+                    case SkillDataType.InOut:
+                        {
+                            FadeInOutClip fadeInOutClip = new FadeInOutClip();
+                            fadeInOutClip.Init(data, owner, this);
+                            skillClips.Add(fadeInOutClip);
+                        }
+                        break;
+                    case SkillDataType.Entity:
+                        {
+                            EntityClip entityClip = new EntityClip();
+                            entityClip.Init(data, owner, this);
+                            skillClips.Add(entityClip);
+                        }
+                        break;
+
+                }
+            }
+
+          
+            InitTimePointer();
+
+            Log.Info("{0}初始化Skilltimeline:name:{1} 成功.", LogConst.SKillTimeline, owner.Name);
+        }
+
+        /// <summary>
+        /// 初始化时间点
+        /// </summary>
+        private void InitTimePointer()
+        {
+            foreach (var item in skillClips)
+            {
+                var timePointer = new StartTimePointer(item);
+
+                timePointers.Add(timePointer);
+                timePointers.Add(new EndTimePointer(item));
+
+                unsortedStartTimePointers.Add(timePointer);                
+            }
+
+            timePointers = timePointers.OrderBy(p =&gt; p.time).ToList();
+        }
+
+        private void Sample(float time,bool b)
+        {
+            currentTime = time;
+
+            if (!isActive)
+                return;
+
+            isActive = b;
+
+            //ignore same minmax times
+            if ((currentTime == 0 || currentTime == length) &amp;&amp; previousTime == currentTime)
+            {
+                return;
+            }
+
+            //Sample pointers
+            if (timePointers != null)
+            {
+                //Log.Error("Sample pointers");
+                Internal_SamplePointers(currentTime, previousTime);
+            }
+
+
+            previousTime = currentTime;
+        }
+
+        private void Internal_SamplePointers(float currentTime, float previousTime)
+        {
+            if (!Application.isPlaying || currentTime &gt; previousTime)
+            {
+                for (var i = 0; i &lt; timePointers.Count; i++)
+                {
+                    try
+                    {
+                        //Debug.LogError("TriggerForward");
+                        timePointers[i].TriggerForward(currentTime, previousTime);
+                    }
+                    catch (System.Exception e) { Debug.LogException(e); }
+                }
+            }
+
+            //Update timePointers triggering backwards
+            if (!Application.isPlaying || currentTime &lt; previousTime)
+            {
+                for (var i = timePointers.Count - 1; i &gt;= 0; i--)
+                {
+                    try { timePointers[i].TriggerBackward(currentTime, previousTime); }
+                    catch (System.Exception e) { Debug.LogException(e); }
+                }
+            }
+
+            //Update timePointers
+            if (unsortedStartTimePointers != null)
+            {
+                for (var i = 0; i &lt; unsortedStartTimePointers.Count; i++)
+                {
+                    try { unsortedStartTimePointers[i].Update(currentTime, previousTime); }
+                    catch (System.Exception e) { Debug.LogException(e); }
+                }
+            }
+        }
+
+        public override void SetStateCantStop(bool b)
+        {
+            Log.Info("{0}设置状态：{1},cantstop:{2}",LogConst.FSM, fsm.CurrentState.GetType(), b);
+            fsm.CurrentState.CantStop = b;
+        }
+    }
+
+
+    public abstract class SkillClip
+    {
+        public Entity actor;
+
+        public SkillTimeline skillTimeline;
+
+        public float duration;
+
+        public float time;
+
+        public float startTime;
+
+        public float endTime;
+
+        virtual public void Init(SkillDataBase data, Entity actor, SkillTimeline skillTimeline)
+        {
+            startTime = data.StartTime;
+            endTime = data.EndTime;
+        }
+
+        abstract public void Enter();
+
+        virtual public void Close()
+        {
+            time = 0;
+            duration = 0;
+        }
+
+        virtual public void Exit()
+        {
+        }
+        virtual public void Update(float currentTime, float previousTime)
+        {
+            time += currentTime;
+        }
+    }
+
+
+    ///An interface for TimePointers (since structs can't be abstract)
+    public interface IDirectableTimePointer
+    {
+        bool isTrigger { get; set; }
+        SkillClip target { get; }
+        float time { get; }
+        void TriggerForward(float currentTime, float previousTime);
+        void TriggerBackward(float currentTime, float previousTime);
+        void Update(float currentTime, float previousTime);
+    }
+
+    ///----------------------------------------------------------------------------------------------
+
+    ///Wraps the startTime of a group, track or clip (IDirectable) along with it's relevant execution
+    public struct StartTimePointer : IDirectableTimePointer
+    {
+        public bool isTrigger 
+        {
+            get
+            {
+                return triggered;
+            }
+            set
+            {
+                triggered = value;
+            }
+        }
+
+        public bool triggered;
+        private float lastTargetStartTime;
+        public SkillClip target { get; private set; }
+        float IDirectableTimePointer.time { get { return target.startTime; } }
+
+        public StartTimePointer(SkillClip target)
+        {
+            this.target = target;
+            triggered = false;
+            lastTargetStartTime = target.startTime;
+        }
+
+        //...
+        void IDirectableTimePointer.TriggerForward(float currentTime, float previousTime)
+        {
+            if (currentTime &gt;= target.startTime)
+            {
+                if (!triggered)
+                {
+                    //Debug.LogError($"triggered{target.name}");
+                    triggered = true;
+                    target.Enter();
+                    target.Update(target.ToLocalTime(currentTime), 0);
+                }
+            }
+        }
+
+        //...
+        void IDirectableTimePointer.Update(float currentTime, float previousTime)
+        {
+
+            //update target and try auto-key
+            if (currentTime &gt;= target.startTime &amp;&amp; currentTime &lt; target.endTime &amp;&amp; currentTime &gt; 0)
+            {
+
+                var deltaMoveClip = target.startTime - lastTargetStartTime;
+                var localCurrentTime = target.ToLocalTime(currentTime);
+                var localPreviousTime = target.ToLocalTime(previousTime + deltaMoveClip);
+
+
+                target.Update(localCurrentTime, localPreviousTime);
+                lastTargetStartTime = target.startTime;
+            }
+        }
+
+        //...
+        void IDirectableTimePointer.TriggerBackward(float currentTime, float previousTime)
+        {
+            if (currentTime &lt; target.startTime || currentTime &lt;= 0)
+            {
+                if (triggered)
+                {
+                    triggered = false;
+                    target.Update(0, target.ToLocalTime(previousTime));
+                    //target.Reverse();
+                }
+            }
+        }
+    }
+
+    ///----------------------------------------------------------------------------------------------
+
+    ///Wraps the endTime of a group, track or clip (IDirectable) along with it's relevant execution
+    public struct EndTimePointer : IDirectableTimePointer
+    {
+        public bool isTrigger
+        {
+            get
+            {
+                return triggered;
+            }
+            set
+            {
+                triggered = value;
+            }
+        }
+
+        private bool triggered;
+        public SkillClip target { get; private set; }
+        float IDirectableTimePointer.time { get { return target.endTime; } }
+
+        public EndTimePointer(SkillClip target)
+        {
+            this.target = target;
+            triggered = false;
+        }
+
+        //...
+        void IDirectableTimePointer.TriggerForward(float currentTime, float previousTime)
+        {
+            if (currentTime &gt;= target.endTime)
+            {
+                if (!triggered)
+                {
+                    triggered = true;
+                    target.Update(target.GetLength(), target.ToLocalTime(previousTime));
+                    target.Exit();
+                }
+            }
+        }
+
+        //...
+        void IDirectableTimePointer.Update(float currentTime, float previousTime)
+        {
+            //Update is/should never be called in TimeOutPointers
+            throw new System.NotImplementedException();
+        }
+
+        //...
+        void IDirectableTimePointer.TriggerBackward(float currentTime, float previousTime)
+        {
+            if (currentTime &lt; target.endTime)
+            {
+                if (triggered)
+                {
+                    triggered = false;
+                    //target.ReverseEnter();
+                    target.Update(target.ToLocalTime(currentTime), target.GetLength());
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+</t></idirectabletimepointer></idirectabletimepointer></idirectabletimepointer></idirectabletimepointer></skillclip></skillclip></t></t></code></pre>
+<p>技能状态基类代码</p>
+<p>为了快速适配协程代码写的有点丑陋大家见谅</p>
+<pre class="wp-block-code"><code>using MDDGameFramework;
+using MDDGameFramework.Runtime;
+using Sirenix.Serialization;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace MDDSkillEngine
+{
+    public abstract class SkillTimelineState<t> : MDDFsmState<t> where T : Entity
+    {
+        /// <summary>
+        /// 一个简易的timeline池子
+        /// </summary>
+        private Queue<skilltimeline<t>&gt; skillTimelineQuene;
+
+        /// <summary>
+        /// 在运行中的协程字典
+        /// </summary>
+        private Dictionary<skilltimeline<t>, CoroutineHandler&gt; coroutineHandlerDic;
+
+        /// <summary>
+        /// 与当前激活状态相匹配的timline
+        /// </summary>
+        private SkillTimeline<t> currentSkillTimeline;
+
+        /// <summary>
+        /// skilltimeline数据资源加载回调
+        /// </summary>
+        private LoadBinaryCallbacks assetCallbacks;
+
+        /// <summary>
+        ///  skilltimeline数据
+        /// </summary>
+        private SkillData skillData;
+
+        /// <summary>
+        /// 缓存一下委托防止频繁GC
+        /// </summary>
+        private System.Action<bool> SkillTimelineEndCallBack;
+
+       
+        private float Duration;
+
+        protected override void OnInit(IFsm<t> fsm)
+        {
+            base.OnInit(fsm);
+            skillTimelineQuene = new Queue<skilltimeline<t>&gt;();
+            coroutineHandlerDic = new Dictionary<skilltimeline<t>, CoroutineHandler&gt;();
+            assetCallbacks = new LoadBinaryCallbacks(LoadCallBack);
+            Game.Resource.LoadBinary(AssetUtility.GetSkillTimelineAsset(GetType().Name), assetCallbacks);
+        }
+
+        protected override void OnEnter(IFsm<t> fsm)
+        {
+            base.OnEnter(fsm);
+
+            //根据timeline池开启协程
+            if (skillTimelineQuene.Count == 0)
+            {
+                SkillTimeline<t> skillTimeline = new SkillTimeline<t>();
+                skillTimeline.Init(fsm, skillData);
+                //开启协程
+                currentSkillTimeline=skillTimeline; 
+                coroutineHandlerDic.Add(skillTimeline, UpdateSkillTimeline(skillTimeline).Start());
+                Log.Info("{0}储备不足创建新的skilltimeline", LogConst.FSM);
+            }
+            else
+            {
+                SkillTimeline<t> skillTimeline = skillTimelineQuene.Dequeue();
+                //开启协程
+                currentSkillTimeline = skillTimeline;
+                coroutineHandlerDic.Add(skillTimeline, UpdateSkillTimeline(skillTimeline).Start());              
+                Log.Info("{0}使用储备的skilltimeline", LogConst.FSM);
+            }
+        }
+
+        protected override void OnUpdate(IFsm<t> fsm, float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+            Duration += elapseSeconds;
+
+            //如果没添加状态结束轨道则根据timeline持续时间结束状态
+            if (FinishTime != 0f)
+            {
+                if (Duration &gt;= FinishTime)
+                {
+                    Finish(fsm);
+                }
+            }           
+        }
+
+        protected override void OnLeave(IFsm<t> fsm, bool isShutdown)
+        {
+            base.OnLeave(fsm, isShutdown);
+
+            if (currentSkillTimeline != null)
+            {
+                //适配cdtrack
+                if (currentSkillTimeline.CDTime &gt;= Duration)
+                {
+                    currentSkillTimeline.Exit();
+                    Game.Coroutine.StopCoroutine(coroutineHandlerDic[currentSkillTimeline].CoroutineWapper);
+                    ReferencePool.Release(coroutineHandlerDic[currentSkillTimeline]);
+                    coroutineHandlerDic.Remove(currentSkillTimeline);
+                    skillTimelineQuene.Enqueue(currentSkillTimeline);
+                }
+            }
+
+            Duration = 0f;
+        }
+
+        /// <summary>
+        /// skilltimeline驱动函数
+        /// </summary>
+        /// <param name="skillTimeline"/>
+        /// <returns></returns>
+        public IEnumerator UpdateSkillTimeline(SkillTimeline<t> skillTimeline)
+        {
+            float DurationTime = 0;
+
+            while (DurationTime &lt;= skillTimeline.length)
+            {               
+                skillTimeline.Updata(Time.deltaTime);
+                DurationTime += Time.deltaTime;
+                yield return YieldHelper.WaitForEndOfFrame;
+            }
+
+            skillTimeline.Exit();
+
+            ReferencePool.Release(coroutineHandlerDic[skillTimeline]);
+            coroutineHandlerDic.Remove(skillTimeline);           
+            skillTimelineQuene.Enqueue(skillTimeline);
+            Log.Info("{0}回收skilltimeline{1}.count{2}", LogConst.SKillTimeline, DurationTime, skillTimelineQuene.Count);
+        }
+
+
+
+        private void LoadCallBack(string entityAssetName, object entityAsset, float duration, object userData)
+        {
+            Log.Info("{0}加载skilltimeline数据成功 name：{1}", LogConst.SKillTimeline, entityAssetName);
+
+            byte[] data = entityAsset as byte[];
+
+            skillData = SerializationUtility.DeserializeValue<skilldata>(data, DataFormat.Binary);
+
+            if (skillData == null)
+            {
+                Log.Error("{0}数据转化失败 name:{1}", LogConst.SKillTimeline, entityAssetName);
+            }
+            FinishTime = skillData.FinishStateTime;
+            SkillTimeline<t> skillTimeline = new SkillTimeline<t>();
+            skillTimeline.Init(Fsm, skillData);
+            skillTimelineQuene.Enqueue(skillTimeline);
+        }
+    }
+}
+</t></t></skilldata></t></t></t></t></t></t></t></skilltimeline<t></skilltimeline<t></t></bool></t></skilltimeline<t></skilltimeline<t></t></t></code></pre>
+<p><strong>为了管理协程，能够暂停协程引入了如下关键代码</strong></p>
+<pre class="wp-block-code"><code>        /// <summary>
+        /// 用于在untiy自带协程上再进行一次封装
+        /// 给unity自带协程扩展一些生命周期
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator CallWrapper()
+        {
+            yield return null;
+            IEnumerator e = Coroutine;
+            while (Running)
+            {
+                if (Paused)
+                    yield return null;
+                else
+                {
+                    if (e != null &amp;&amp; e.MoveNext())
+                    {
+                        yield return e.Current;
+                    }
+                    else
+                    {
+                        Running = false;
+                    }
+                }
+            }
+            CompletedAction?.Invoke(Stopped);
+        }</code></pre>
+<p>ColliderClip runtimeCode</p>
+<p>主要展示如何将timeline 具体的Clip逻辑搬入自定义runtime</p>
+<p>本质上是对editor运行逻辑的复刻</p>
+<pre class="wp-block-code"><code>using System;
+using System.Collections.Generic;
+using Animancer;
+using MDDGameFramework.Runtime;
+using UnityEngine;
+using MDDGameFramework;
+
+namespace MDDSkillEngine
+{
+    public class ColliderClip : SkillClip
+    {
+        ColliderSkillData skillData;
+
+        int id;
+
+        List<vector3> bezierPath = new List<vector3>();
+
+        public override void Init(SkillDataBase data, Entity actor, SkillTimeline skillTimeline)
+        {
+            base.Init(data, actor, skillTimeline);
+            skillData = data as ColliderSkillData;
+            this.skillTimeline = skillTimeline;
+            this.actor = actor;
+        }
+
+        public override void Enter()
+        {
+            id = Game.Entity.GenerateSerialId();
+
+            Game.Entity.ShowCollider(Utility.Assembly.GetType(Utility.Text.Format("MDDSkillEngine.{0}", skillData.ColliderLogic)), skillData.ColliderName, new ColliderData(id, 0, actor)
+            {
+                targetType = skillTimeline.TargetType,
+                HitEffectName = skillData.EffectName,
+                buffName = skillData.AddBuffName,
+                localRotation = skillData.localRotation,
+                localScale = skillData.localScale,
+                localeftPostion = skillData.localeftPostion,
+                boundCenter = skillData.boundCenter,
+                boundSize = skillData.boundSize,
+                height = skillData.height,
+                radius = skillData.redius,
+                Duration = this.GetLength(),
+                hasPath = skillData.hasPath,
+                useSpeed = skillData.useSpeed,
+                bezierPath = skillData.bezierPath,
+                bezierPathLength = skillData.bezierPathLength,
+                bezierPathParentPosition = skillData.bezierPathParentPosition,
+                bezierPathParentRotation = skillData.bezierPathParentRotation,
+            });
+
+
+
+            if (!skillData.useSpeed &amp;&amp; skillData.hasPath)
+            {
+                bezierPath.Clear();
+
+                //坐标转换 将曲线本地坐标转换为世界坐标
+                for (int i = 0; i &lt; skillData.bezierPath.Length; i++)
+                {
+                    Vector3 vec3;
+                    vec3 = actor.CachedTransform.TransformPoint(skillData.bezierPath[i]);
+                    bezierPath.Add(vec3);
+                }
+            }
+
+            SkillTimeline<entity> skillTimeline1 = skillTimeline as SkillTimeline<entity>;
+            Log.Info("{0}进入Colliderclip ：{1} currenttime:{2}", LogConst.SKillTimeline, skillData.ResouceName, skillTimeline1.currentTime);
+        }
+
+        public override void Update(float currentTime, float previousTime)
+        {
+            base.Update(currentTime, previousTime);
+            // Log.Info("{0}upodateColliderClip name：{1}", LogConst.SKillTimeline, GetType().Name);
+            duration += currentTime;
+
+            //利用贝塞尔曲线
+            if (!skillData.useSpeed)
+            {
+                if (skillData.hasPath)
+                {
+                    if (Game.Entity.HasEntity(id))
+                    {
+                        Entity entity = Game.Entity.GetGameEntity(id);
+                        entity.transform.position = AIUtility.GetPoint(currentTime / this.GetLength(), skillData.bezierPathLength, bezierPath);
+                    }
+                }
+            }
+        }
+
+        public override void Exit()
+        {
+            //Game.Entity.HideEntity(colid);
+            base.Exit();
+            id = 0;
+            Log.Info("{0}离开ColliderClip name：{1}", LogConst.SKillTimeline, GetType().Name);
+        }
+
+
+    }
+}
+
+
+</entity></entity></vector3></vector3></code></pre>
+<h3 class="wp-block-heading">4.一个简易的快速编辑技能状态的场景</h3>
+<p>通过菜单进入场景</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-671" data-src="/wordpress/wp-content/uploads/2022/06/image-21.png" decoding="async" height="58" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/image-21.png" width="135"/><figcaption>通过菜单进入示例图</figcaption></figure>
+<noscript><img alt="" class="wp-image-671" decoding="async" height="58" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/image-21.png" width="135"/><figcaption>通过菜单进入示例图</figcaption></noscript>
+<p>进行相关功能的选择</p>
+<figure class="wp-block-image size-large"><img alt="" class="wp-image-674" data-src="/wordpress/wp-content/uploads/2022/06/image-24-1024x371.png" decoding="async" height="371" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-24-1024x371.png" srcset="/wordpress/wp-content/uploads/2022/06/image-24-1024x371.png 1024w, /wordpress/wp-content/uploads/2022/06/image-24-300x109.png 300w, /wordpress/wp-content/uploads/2022/06/image-24-768x279.png 768w, /wordpress/wp-content/uploads/2022/06/image-24.png 1155w" width="1024"/></figure>
+<noscript><img alt="" class="wp-image-674" decoding="async" height="371" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="/wordpress/wp-content/uploads/2022/06/image-24-1024x371.png" srcset="/wordpress/wp-content/uploads/2022/06/image-24-1024x371.png 1024w, /wordpress/wp-content/uploads/2022/06/image-24-300x109.png 300w, /wordpress/wp-content/uploads/2022/06/image-24-768x279.png 768w, /wordpress/wp-content/uploads/2022/06/image-24.png 1155w" width="1024"/></noscript>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-673" data-src="/wordpress/wp-content/uploads/2022/06/image-23.png" decoding="async" height="473" loading="lazy" sizes="(max-width: 604px) 100vw, 604px" src="/wordpress/wp-content/uploads/2022/06/image-23.png" srcset="/wordpress/wp-content/uploads/2022/06/image-23.png 604w, /wordpress/wp-content/uploads/2022/06/image-23-300x235.png 300w" width="604"/><figcaption>选择相对于的技能进行编辑即可</figcaption></figure>
+<noscript><img alt="" class="wp-image-673" decoding="async" height="473" loading="lazy" sizes="(max-width: 604px) 100vw, 604px" src="/wordpress/wp-content/uploads/2022/06/image-23.png" srcset="/wordpress/wp-content/uploads/2022/06/image-23.png 604w, /wordpress/wp-content/uploads/2022/06/image-23-300x235.png 300w" width="604"/><figcaption>选择相对于的技能进行编辑即可</figcaption></noscript>
+<h2 class="wp-block-heading">可以用timeline实现的优秀案例</h2>
+<p>冰鸭大招！</p>
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-707" data-src="/wordpress/wp-content/uploads/2022/06/333.gif" decoding="async" height="368" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/333.gif" width="712"/><figcaption>冰鸭大招GIF</figcaption></figure>
+<noscript><img alt="" class="wp-image-707" decoding="async" height="368" loading="lazy" src="/wordpress/wp-content/uploads/2022/06/333.gif" width="712"/><figcaption>冰鸭大招GIF</figcaption></noscript>
+<p>我不知道米哈游具体是怎么实现的</p>
+<p>但是这个技能效果用timeline编辑来实现是比较合适的</p>
+<p>拆解如下：</p>
+<p>进入大招状态（逻辑上切换形态）</p>
+<p>动画轨道播放对应动画，视情况引入旋转轨道</p>
+<p>理律回旋上升的曲线交给角色位移轨道的贝塞尔曲线编辑即可</p>
+<p>碰撞体轨道在理律落地时生成对应检测范围</p>
+<p>多特效轨道细致摆放</p>
+<p>摄像机轨道细致调教，同时可以给相机轨道加入贝塞尔曲线编辑辅助运镜</p>
+<p>在引入timeline编辑后，手巧 + 在线的动画编辑能力 + 对应的美术资源 + MDDSkillEngine就可以复刻冰鸭大招啦。</p>
+<h2 class="wp-block-heading">小结</h2>
+<p>如果有小伙伴按照目录顺序看到了这里，就已经看完MDDSkillEngine的核心思路了。</p>
+<p>很显然MDDSkillEngine需要打磨的地方还多了去了。</p>
+<p>但之后我并不打算单纯的继续维护MDDSkillEngine的更新了（可能会手痒把ACTDemo做一做）</p>
+<p>我更希望的是我对技能拆解的思路能够起到抛砖引玉的作用。</p>
+<p>让更多小伙伴对技能系统的理解更深入一步的同时诞生出更好的想法，我的思路也是受了很多小伙伴的启发。</p>
+<p>接下来我会使用MDDSkillEngine投入到具体的游戏制作当中，在制作游戏的同时，顺便让具体的业务去推动MDDSkillEngine的完善。</p>
+<p></p>
+<!--<div class="oshimai"></div>-->
+<!--<h2 style="opacity:0;max-height:0;margin:0">Comments</h2>--><!-- 评论跳转标记 -->
+</div><!-- .entry-content -->
+<footer class="post-footer">
+<div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow" target="_blank"><i aria-hidden="true" class="fa fa-creative-commons"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+<div class="post-tags">
+</div>
+
+<div class="post-share">
+<div class="social-share sharehidden"></div>
+<i class="iconfont show-share icon-forward"></i>
+</div>
+</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+<div class="toc-container"><div class="toc"></div></div>
+<section class="post-squares nextprev">
+<div class="post-nepre half previous">
+<a href="/buff%e7%b3%bb%e7%bb%9f/" rel="prev"><div class="background lazyload" data-src="/wordpress/wp-content/uploads/2022/07/魔女-1024x576.jpg" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Previous Post</span><div class="info"><h3>BUFF系统</h3><hr/></div></a> </div>
+<div class="post-nepre half next">
+<a href="/%e8%a7%a3%e5%86%b3%e8%a1%8c%e4%b8%ba%e6%a0%91%e4%b8%8e%e7%8a%b6%e6%80%81%e6%9c%ba%e7%9a%84%e9%80%9a%e4%bf%a1%e9%97%ae%e9%a2%98/" rel="next"><div class="background lazyload" data-src="/wordpress/wp-content/uploads/2022/07/魔女-1024x576.jpg" style="background-image:url(/assets/vendor/8c901598231a1937f3.svg);"></div><span class="label">Next Post</span><div class="info"><h3>解决行为树与状态机的通信问题</h3><hr/></div></a> </div>
+</section>
+<section class="author-profile">
+<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<a class="profile gravatar" href="/author/maodaodao/"><img alt="maodaodao" height="70" itemprop="image" src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg" width="70"/></a>
+<div class="meta">
+<span class="title">Author</span>
+<h3 itemprop="name">
+<a href="/author/maodaodao/" itemprop="url" rel="author">maodaodao</a>
+</h3>
+</div>
+</div>
+<hr/>
+<p><i class="iconfont icon-write"></i>记录历程，整理思路，共享知识，分享思维。</p>
+</section>
+</main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->
+</div><!-- #page Pjax container-->
+<footer class="site-footer" id="colophon" role="contentinfo">
+<div class="site-info" theme-info="Sakura v3.3.9">
+<div class="footertext">
+<div class="img-preload">
+<img src="/assets/vendor/96c4e21a0aebe8c718.svg"/>
+<img src="/assets/vendor/ecc860e56ba0f62927.svg"/>
+</div>
+<p style="color: #666666;"><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2021020192号-1</a>
+</p>
+</div>
+<div class="footer-device">
+<p style="font-family: 'Ubuntu', sans-serif;">
+<span style="color: #b9b9b9;">
+												Theme <a href="https://2heng.xin/theme-sakura/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);" target="_blank">Mashiro</a>
+</span>
+</p>
+</div>
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<div class="openNav no-select">
+<div class="iconflat no-select">
+<div class="icon"></div>
+</div>
+<div class="site-branding">
+<h1 class="site-title"><a href="/">心界</a></h1>
+</div>
+</div><!-- m-nav-bar -->
+</section><!-- #section -->
+<!-- m-nav-center -->
+<div id="mo-nav">
+<div class="m-avatar">
+<img src="/wordpress/wp-content/uploads/2021/06/QQ图片20210627223843.jpg"/>
+</div>
+<div class="m-search">
+<form action="/search/" class="m-search-form" method="get" role="search">
+<input class="m-search-input" name="s" placeholder="搜索..." required="" type="search"/>
+</form>
+</div>
+<ul class="menu" id="menu-menu-2"><li><a href="/">主页</a></li>
+<li><a href="/unity/">Unity游戏开发-笔记</a>
+<ul class="sub-menu">
+<li><a href="/unity/%e5%9f%ba%e7%a1%80%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf-unity/">基础渲染管线-Unity</a></li>
+<li><a href="/unity/urp/">URP</a></li>
+<li><a href="/unity/gameframework%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90%e4%b8%8e%e5%ae%9e%e8%b7%b5/">GameFramework源码解析与实践</a></li>
+<li><a href="/unity/%e7%bb%bc%e5%90%88%e7%ac%94%e8%ae%b0/">综合笔记</a></li>
+<li><a href="/unity/%e5%b0%8f%e7%90%83%e7%9a%84%e8%bf%90%e5%8a%a8%e7%ac%94%e8%ae%b0/">小球的运动笔记</a></li>
+</ul>
+</li>
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/">知识分享自我迭代</a>
+<ul class="sub-menu">
+<li class="current-post-ancestor current-menu-parent"><a href="/%e7%9f%a5%e8%af%86%e5%88%86%e4%ba%ab%e8%87%aa%e6%88%91%e8%bf%ad%e4%bb%a3/%e6%8a%80%e8%83%bd%e7%b3%bb%e7%bb%9f/">技能制作管线</a></li>
+<li><a href="/%e8%8a%82%e7%82%b9%e7%bc%96%e8%be%91%e5%99%a8-%e5%9f%ba%e7%a1%80/">节点编辑器-基础</a></li>
+</ul>
+</li>
+<li><a href="/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/">数据结构</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/">随笔</a>
+<ul class="sub-menu">
+<li><a href="/%e9%9a%8f%e7%ac%94/%e5%93%b2%e5%ad%a6%e9%9a%8f%e7%ac%94/">哲学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%96%87%e5%ad%a6%e9%9a%8f%e7%ac%94/">文学随笔</a></li>
+<li><a href="/%e9%9a%8f%e7%ac%94/%e6%b8%b8%e6%88%8f%e9%9a%8f%e7%ac%94/">游戏随笔</a></li>
+</ul>
+</li>
+<li><a href="/%e4%b8%80%e8%b5%b7%e8%bf%bd%e6%a2%a6%e7%9a%84%e5%b0%8f%e4%bc%99%e4%bc%b4/">一起追梦的小伙伴</a></li>
+</ul> </div><!-- m-nav-center end -->
+<a class="cd-top faa-float animated"></a>
+<button id="moblieGoTop" title="Go to top"><i aria-hidden="true" class="fa fa-chevron-up"></i></button>
+<button id="moblieDarkLight"><i aria-hidden="true" class="fa fa-moon-o"></i></button>
+<!-- search start -->
+<form action="/search/" class="js-search search-form search-form--modal" method="get" role="search">
+<div class="search-form__inner">
+<div class="micro">
+<p class="micro mb-">想要找点什么呢？</p>
+<i class="iconfont icon-search"></i>
+<input class="text-input" name="s" placeholder="搜索" required="" type="search"/>
+</div>
+</div>
+<div class="search_close"></div>
+</form>
+<!-- search end -->
+<script id="js_lib-js" src="/wordpress/wp-content/themes/Sakura-master/cdn/js/lib.js?ver=3.3.9" type="text/javascript"></script>
+<script id="app-js-extra" type="text/javascript">
+/* <![CDATA[ */
+var Poi = {"pjax":"","movies":"close","windowheight":"auto","codelamp":"close","ajaxurl":"/wordpress/wp-admin/admin-ajax.php","order":"asc","formpostion":"bottom","reply_link_version":"new","api":"/wp-json/","nonce":"4b6889b8e9","google_analytics_id":"","gravatar_url":"gravatar.2heng.xin/avatar"};
+/* ]]> */
+</script>
+<script id="app-js" src="/wordpress/wp-content/themes/Sakura-master/js/sakura-app.js?ver=3.3.9" type="text/javascript"></script>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+<div class="keys">
+<span id="open-skinMenu">
+<i class="iconfont icon-gear inline-block rotating"></i>  切换主题 | SCHEME TOOL 
+        </span>
+</div>
+</div>
+<div class="skin-menu no-select">
+<div class="theme-controls row-container">
+<ul class="menu-list">
+<li id="white-bg">
+<i aria-hidden="true" class="fa fa-television"></i>
+</li><!--Default-->
+<li id="sakura-bg">
+<i class="iconfont icon-sakura"></i>
+</li><!--Sakura-->
+<li id="gribs-bg">
+<i aria-hidden="true" class="fa fa-slack"></i>
+</li><!--Grids-->
+<li id="KAdots-bg">
+<i class="iconfont icon-dots"></i>
+</li><!--Dots-->
+<li id="totem-bg">
+<i aria-hidden="true" class="fa fa-superpowers"></i>
+</li><!--Orange-->
+<li id="pixiv-bg">
+<i class="iconfont icon-pixiv"></i>
+</li><!--Start-->
+<li id="bing-bg">
+<i class="iconfont icon-bing"></i>
+</li><!--Bing-->
+<li id="dark-bg">
+<i aria-hidden="true" class="fa fa-moon-o"></i>
+</li><!--Night-->
+</ul>
+</div>
+<div class="font-family-controls row-container">
+<button class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()" type="button">Serif</button>
+<button class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()" type="button">Sans Serif</button>
+</div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="aplayer" data-fixed="true" data-id="2288037900" data-server="netease" data-theme="orange" data-type="playlist" id="aplayer-float" style="z-index: 100;">
+</div>
+<script defer="True" src="/assets/static-restore.js"></script></body>
+</html>
