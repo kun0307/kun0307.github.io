@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded',async()=>{
+ document.querySelectorAll('[data-editor-id] .post-thumb img').forEach(img=>{img.loading='eager';});
  const params=new URLSearchParams(location.search);
  const aliases=await fetch('/assets/post-aliases.json').then(r=>r.json()).catch(()=>({}));
  if(params.has('p')&&aliases[params.get('p')]){location.replace(aliases[params.get('p')]);return;}
